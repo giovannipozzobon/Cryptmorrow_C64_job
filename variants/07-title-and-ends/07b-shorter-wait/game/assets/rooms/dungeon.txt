@@ -1,0 +1,46 @@
+# Cryptmorrow dungeon, read by game/assets/build_assets.py.
+# Four rows of four rooms; each name is a file in this folder
+# (name.txt). "-" marks an empty place in the grid. A room's
+# number is row * 4 + column: moss_gate is room 1.
+#
+# Symbols used by the room maps (20 x 10 metatiles, one
+# character each, 16 x 16 screen pixels):
+#
+#   #  wall (the builder picks mass, lit face or rimmed edge)
+#   T  wall torch, flame on the left   t  flame on the right
+#   r  wall with roots   n  wall with a burial niche
+#      (both need floor below, like a torch)
+#   .  floor (shadowed automatically under a wall)
+#   m  floor with moss                 b  floor with bones
+#   g  floor with gold coins           u  amber urn (solid)
+#   w  standing water (solid; bats fly over it)
+#   P  pillar, 1 x 2                   G  gate, 2 x 3
+#   W  well, 2 x 2                     A  altar, 3 x 1
+#   E  opening towards the next room, on the edge of the map.
+#      The neighbour must have the same opening on the facing
+#      edge, and the tile inside the opening must be floor.
+#   D  locked door: an opening closed by a grate, 2 tiles side
+#      by side on the south edge or one above the other on the
+#      east or west edge. The room file names its key: "door: A".
+#
+# "door: portal" makes the gate G of the start room the way out:
+# it opens when the explorer brings the three seals, and walking
+# through it wins the game. "zone: A" (B, C) gives a room the
+# colours of its zone; without it a room belongs to the atrio.
+#
+# Objects are sprites, listed in the room file before the map:
+# "object: key A 3 2" (kind, key letter, column, row), and
+# "object: seal 10 3", "object: treasure ...", "object:
+# potion ...". At most two per room, on floor tiles.
+# Enemies too: "enemy: skeleton 9 8 h" (patrols across, "v"
+# up and down; add "fast" for one pixel every frame) and
+# "enemy: bat 10 2". At most three per room, on floor tiles,
+# none in the start room. They come back each time the room
+# is entered.
+#
+start: moss_gate
+grid:
+bone_pit     moss_gate    old_well      black_cistern
+root_cellar  crossroads   long_gallery  flooded_stair
+ossuary      sunken_hall  amber_hall    drowned_shrine
+catacombs    bone_shrine  treasury      sun_vault

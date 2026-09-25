@@ -1,0 +1,19 @@
+# Cryptmorrow room 3, zone B. Symbols: see dungeon.txt.
+name: BLACK CISTERN
+zone: B
+object: key C 9 5
+object: potion 16 7
+enemy: skeleton 9 2 h fast
+enemy: bat 3 5
+enemy: bat 16 5
+map:
+####################
+####T##########t####
+##................##
+##..wwwwwwwwwwww..##
+##..wwwwwwwwwwww..##
+##..ww........ww..##
+##..ww..P..P..ww..##
+##................##
+##..m..........m..##
+#########EE#########

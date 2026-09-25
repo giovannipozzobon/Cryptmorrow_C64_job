@@ -1,0 +1,17 @@
+# Cryptmorrow room 0, atrio. Symbols: see dungeon.txt.
+name: BONE PIT
+object: treasure 16 3
+object: potion 3 7
+enemy: skeleton 9 2 h fast
+enemy: bat 13 6
+map:
+####################
+####T##n####n##t####
+##................##
+##..b..........b..##
+##....P......P....##
+##....P......P....##
+##..b.....b....b..##
+##.m..............##
+##......b....m....##
+##########EE########

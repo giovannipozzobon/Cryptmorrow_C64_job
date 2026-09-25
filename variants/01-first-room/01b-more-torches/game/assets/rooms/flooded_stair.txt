@@ -1,0 +1,18 @@
+# Cryptmorrow room 7, zone B. Symbols: see dungeon.txt.
+# Door B of the long gallery opens on its west side.
+name: FLOODED STAIR
+zone: B
+object: potion 16 2
+enemy: skeleton 12 6 v fast
+enemy: bat 16 5
+map:
+#########EE#########
+####T####..####t####
+##ww..............##
+##ww....wwwwww....##
+E.......wwwwww....##
+E.................##
+##....wwwww.......##
+##....wwwww...ww..##
+##............ww..##
+#########EE#########

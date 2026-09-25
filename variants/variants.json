@@ -1,0 +1,435 @@
+{
+  "01a-faster-flames": {
+    "step": 1,
+    "kind": "variant",
+    "title": "Faster flames",
+    "folder": "variants/01-first-room/01a-faster-flames",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 1 --root variants/01-first-room/01a-faster-flames --evidence variants/01-first-room/01a-faster-flames/evidence --set step_model.FLAME_SHIFT = 2",
+      "result": "PASS",
+      "message": "",
+      "frames": 514,
+      "facts": [
+        {
+          "fact": "the four flames every 4 frames",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "01b-more-torches": {
+    "step": 1,
+    "kind": "variant",
+    "title": "Two more torches",
+    "folder": "variants/01-first-room/01b-more-torches",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 1 --root variants/01-first-room/01b-more-torches --evidence variants/01-first-room/01b-more-torches/evidence",
+      "result": "PASS",
+      "message": "",
+      "frames": 514,
+      "facts": [
+        {
+          "fact": "six torches listed at the start",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "02a-faster-explorer": {
+    "step": 2,
+    "kind": "variant",
+    "title": "A faster explorer",
+    "folder": "variants/02-explorer/02a-faster-explorer",
+    "prg_bytes": 47105,
+    "route": "tests/routes/variant_02a.py",
+    "outcome": {
+      "command": "tests/verify_step.py --step 2 --root variants/02-explorer/02a-faster-explorer --evidence variants/02-explorer/02a-faster-explorer/evidence --set hero_model.HERO_SPEED = 2 --script tests/routes/variant_02a.py --no-shows",
+      "result": "PASS",
+      "message": "",
+      "frames": 463,
+      "facts": [
+        {
+          "fact": "two pixels in a frame",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "02b-quicker-steps": {
+    "step": 2,
+    "kind": "variant",
+    "title": "Quicker steps",
+    "folder": "variants/02-explorer/02b-quicker-steps",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 2 --root variants/02-explorer/02b-quicker-steps --evidence variants/02-explorer/02b-quicker-steps/evidence --set hero_model.WALK_RATE = 4",
+      "result": "PASS",
+      "message": "",
+      "frames": 1117,
+      "facts": [
+        {
+          "fact": "all eight walking frames",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "03a-autumn-moss": {
+    "step": 3,
+    "kind": "variant",
+    "title": "Autumn moss",
+    "folder": "variants/03-dungeon/03a-autumn-moss",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 3 --root variants/03-dungeon/03a-autumn-moss --evidence variants/03-dungeon/03a-autumn-moss/evidence",
+      "result": "PASS",
+      "message": "",
+      "frames": 3039,
+      "facts": [
+        {
+          "fact": "the rooms as the reference with the new tables",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "03b-green-energy": {
+    "step": 3,
+    "kind": "variant",
+    "title": "A green energy bar",
+    "folder": "variants/03-dungeon/03b-green-energy",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 3 --root variants/03-dungeon/03b-green-energy --evidence variants/03-dungeon/03b-green-energy/evidence --set reference.FULL = 13",
+      "result": "PASS",
+      "message": "",
+      "frames": 3039,
+      "facts": [
+        {
+          "fact": "the HUD as the reference, bar in light green",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "04a-generous-potion": {
+    "step": 4,
+    "kind": "variant",
+    "title": "A more generous potion",
+    "folder": "variants/04-objects-doors/04a-generous-potion",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 4 --root variants/04-objects-doors/04a-generous-potion --evidence variants/04-objects-doors/04a-generous-potion/evidence --set world_model.POTION_ENERGY = 4",
+      "result": "PASS",
+      "message": "",
+      "frames": 11545,
+      "facts": [
+        {
+          "fact": "the potion from four cells to eight",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "04b-richer-treasures": {
+    "step": 4,
+    "kind": "variant",
+    "title": "Richer treasures",
+    "folder": "variants/04-objects-doors/04b-richer-treasures",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 4 --root variants/04-objects-doors/04b-richer-treasures --evidence variants/04-objects-doors/04b-richer-treasures/evidence --set world_model.POINTS[5] = 500",
+      "result": "PASS",
+      "message": "",
+      "frames": 11545,
+      "facts": [
+        {
+          "fact": "7000 points at VICTORY",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "05a-gentler-damage": {
+    "step": 5,
+    "kind": "variant",
+    "title": "Gentler damage",
+    "folder": "variants/05-combat/05a-gentler-damage",
+    "prg_bytes": 47105,
+    "route": "tests/routes/variant_05a.py",
+    "outcome": {
+      "command": "tests/verify_step.py --step 5 --root variants/05-combat/05a-gentler-damage --evidence variants/05-combat/05a-gentler-damage/evidence --set combat_model.DAMAGE = 1 --script tests/routes/variant_05a.py --no-shows",
+      "result": "PASS",
+      "message": "",
+      "frames": 1336,
+      "facts": [
+        {
+          "fact": "eight touches before GAME OVER",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "05b-lazy-bats": {
+    "step": 5,
+    "kind": "variant",
+    "title": "Lazy bats",
+    "folder": "variants/05-combat/05b-lazy-bats",
+    "prg_bytes": 47105,
+    "route": "tests/routes/variant_05b.py",
+    "outcome": {
+      "command": "tests/verify_step.py --step 5 --root variants/05-combat/05b-lazy-bats --evidence variants/05-combat/05b-lazy-bats/evidence --set combat_model.CHASE_X = 60 --set combat_model.CHASE_Y = 45 --script tests/routes/variant_05b.py --no-shows",
+      "result": "PASS",
+      "message": "",
+      "frames": 488,
+      "facts": [
+        {
+          "fact": "the bat still at 66 pixels",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "06a-effects-first": {
+    "step": 6,
+    "kind": "variant",
+    "title": "Start with the sound effects",
+    "folder": "variants/06-sound/06a-effects-first",
+    "prg_bytes": 48238,
+    "route": "tests/routes/variant_06a.py",
+    "outcome": {
+      "command": "tests/verify_step.py --step 6 --root variants/06-sound/06a-effects-first --evidence variants/06-sound/06a-effects-first/evidence --script tests/routes/variant_06a.py --no-shows",
+      "result": "PASS",
+      "message": "",
+      "frames": 362,
+      "facts": [
+        {
+          "fact": "effects only",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "06b-faster-music": {
+    "step": 6,
+    "kind": "variant",
+    "title": "Faster music",
+    "folder": "variants/06-sound/06b-faster-music",
+    "prg_bytes": 48238,
+    "route": "tests/routes/variant_06b.py",
+    "outcome": {
+      "command": "tests/verify_step.py --step 6 --root variants/06-sound/06b-faster-music --evidence variants/06-sound/06b-faster-music/evidence --script tests/routes/variant_06b.py --no-shows",
+      "result": "PASS",
+      "message": "",
+      "frames": 1455,
+      "facts": [
+        {
+          "fact": "theme and piece of GAME OVER, then silence",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "07a-another-name": {
+    "step": 7,
+    "kind": "variant",
+    "title": "Another name on the title",
+    "folder": "variants/07-title-and-ends/07a-another-name",
+    "prg_bytes": 48238,
+    "outcome": {
+      "command": "tests/verify_game.py --step 7 --root variants/07-title-and-ends/07a-another-name --evidence variants/07-title-and-ends/07a-another-name/evidence",
+      "result": "PASS",
+      "message": "",
+      "frames": 20081,
+      "facts": [
+        {
+          "fact": "the title as the reference",
+          "ok": true
+        }
+      ],
+      "proved": true
+    }
+  },
+  "07b-shorter-wait": {
+    "step": 7,
+    "kind": "variant",
+    "title": "A shorter wait at the end",
+    "folder": "variants/07-title-and-ends/07b-shorter-wait",
+    "prg_bytes": 48238,
+    "outcome": {
+      "command": "tests/verify_game.py --step 7 --root variants/07-title-and-ends/07b-shorter-wait --evidence variants/07-title-and-ends/07b-shorter-wait/evidence --set game_model.END_DELAY = 50 --script tests/routes/variant_07b.py",
+      "result": "PASS",
+      "message": "",
+      "frames": 19891,
+      "facts": [
+        {
+          "fact": "the complete route, replanned",
+          "ok": true
+        }
+      ],
+      "proved": true
+    },
+    "route": "tests/routes/variant_07b.py"
+  },
+  "02x-missing-jump": {
+    "step": 2,
+    "kind": "break",
+    "title": "A missing jump",
+    "folder": "variants/02-explorer/02x-missing-jump",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 2 --root variants/02-explorer/02x-missing-jump --evidence variants/02-explorer/02x-missing-jump/evidence",
+      "result": "FAIL",
+      "message": "Step verification FAILED: game 1, Frame 18: C64 {'x': 149, 'y': 111, 'dir': 3, 'moving': 1, 'frame': 0, 'timer': 1, 'pointer': 6} != model {'x': 147, 'y': 111, 'dir': 2, 'moving': 1, 'frame': 0, 'timer': 1, 'pointer': 4}",
+      "frames": null,
+      "proved": true,
+      "picture": {
+        "file": "02x-missing-jump.png",
+        "entries": 2,
+        "frames": 136
+      }
+    }
+  },
+  "04x-key-kept": {
+    "step": 4,
+    "kind": "break",
+    "title": "A key that is never used up",
+    "folder": "variants/04-objects-doors/04x-key-kept",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 4 --root variants/04-objects-doors/04x-key-kept --evidence variants/04-objects-doors/04x-key-kept/evidence",
+      "result": "FAIL",
+      "message": "Step verification FAILED: game 1, Frame 3905: game state {'room': 4, 'energy': 8, 'key_set': 1, 'seals': 0, 'score': 750, 'doors_open': 1, 'taken': {0, 2, 3, 7}, 'ended': 0} != model {'room': 4, 'energy': 8, 'key_set': 0, 'seals': 0, 'score': 750, 'doors_open': 1, 'taken': {0, 2, 3, 7}, 'ended': 0}",
+      "frames": null,
+      "proved": true,
+      "picture": {
+        "file": "04x-key-kept.png",
+        "entries": 60,
+        "frames": 3933
+      }
+    }
+  },
+  "05x-no-floor": {
+    "step": 5,
+    "kind": "break",
+    "title": "Energy below zero",
+    "folder": "variants/05-combat/05x-no-floor",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 5 --root variants/05-combat/05x-no-floor --evidence variants/05-combat/05x-no-floor/evidence",
+      "result": "FAIL",
+      "message": "Step verification FAILED: game 3, Frame 658: explorer hidden",
+      "frames": null,
+      "proved": true,
+      "picture": {
+        "file": "05x-no-floor.png",
+        "entries": 727,
+        "frames": 17486
+      }
+    }
+  },
+  "06x-stuck-note": {
+    "step": 6,
+    "kind": "break",
+    "title": "A blade without a sound",
+    "folder": "variants/06-sound/06x-stuck-note",
+    "prg_bytes": 48238,
+    "outcome": {
+      "command": "tests/verify_step.py --step 6 --root variants/06-sound/06x-stuck-note --evidence variants/06-sound/06x-stuck-note/evidence",
+      "result": "FAIL",
+      "message": "Step verification FAILED: game 2, Frame 119: sound state differs from the model (C64, model): {'fx_pos': (1, 2)}",
+      "frames": null,
+      "proved": true
+    }
+  },
+  "07x-held-stick": {
+    "step": 7,
+    "kind": "break",
+    "title": "A stick held into the title",
+    "folder": "variants/07-title-and-ends/07x-held-stick",
+    "prg_bytes": 48238,
+    "outcome": {
+      "command": "tests/verify_game.py --step 7 --root variants/07-title-and-ends/07x-held-stick --evidence variants/07-title-and-ends/07x-held-stick/evidence",
+      "result": "FAIL",
+      "message": "Game verification FAILED: Frame 20425: state, end_timer, fire_armed, stick_held (0, 0, 0, 0) != model (0, 0, 0, 2)",
+      "frames": null,
+      "proved": true,
+      "picture": {
+        "file": "07x-held-stick.png",
+        "entries": 750,
+        "frames": 17264
+      }
+    }
+  },
+  "08x-first-block": {
+    "step": 8,
+    "kind": "break",
+    "title": "The first block left behind",
+    "folder": "variants/08-complete/08x-first-block",
+    "prg_bytes": 25233,
+    "outcome": {
+      "command": "tests/verify_game.py --step 8 --root variants/08-complete/08x-first-block --evidence variants/08-complete/08x-first-block/evidence",
+      "result": "FAIL",
+      "message": "Game verification FAILED: After the start: block 0x4000 not in place",
+      "frames": null,
+      "proved": true,
+      "picture": {
+        "file": "08x-first-block.png",
+        "entries": 2,
+        "frames": 16
+      }
+    }
+  },
+  "03x-high-byte": {
+    "step": 3,
+    "kind": "break",
+    "title": "A high byte left behind",
+    "folder": "variants/03-dungeon/03x-high-byte",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 3 --root variants/03-dungeon/03x-high-byte --evidence variants/03-dungeon/03x-high-byte/evidence",
+      "result": "FAIL",
+      "message": "Step verification FAILED: game 1, Frame 1221: C64 {'x': 265, 'y': 88, 'dir': 3, 'moving': 1, 'frame': 0, 'timer': 6, 'pointer': 6} != model {'x': 9, 'y': 88, 'dir': 3, 'moving': 1, 'frame': 0, 'timer': 6, 'pointer': 6}",
+      "frames": null,
+      "proved": true,
+      "picture": {
+        "file": "03x-high-byte.png",
+        "entries": 27,
+        "frames": 1225
+      }
+    }
+  },
+  "01x-hires": {
+    "step": 1,
+    "kind": "break",
+    "title": "The multicolour bit forgotten",
+    "folder": "variants/01-first-room/01x-hires",
+    "prg_bytes": 47105,
+    "outcome": {
+      "command": "tests/verify_step.py --step 1 --root variants/01-first-room/01x-hires --evidence variants/01-first-room/01x-hires/evidence",
+      "result": "FAIL",
+      "message": "Step verification FAILED: VIC set up as {'$d011': 59, '$d016': 8, '$d018': 24, 'bank': 2}, not {'$d011': 59, '$d016': 24, '$d018': 24, 'bank': 2}",
+      "frames": null,
+      "proved": true,
+      "picture": {
+        "file": "01x-hires.png",
+        "entries": 1,
+        "frames": 64
+      }
+    }
+  }
+}

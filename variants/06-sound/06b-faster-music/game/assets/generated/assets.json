@@ -1,0 +1,1096 @@
+{
+  "version": "1.0.1",
+  "stage": "The complete game",
+  "metatile": "2 x 2 cells, 8 x 16 logical pixels, 40 bytes",
+  "tiles": 120,
+  "tile_limit": 128,
+  "catalog": [
+    {
+      "id": 0,
+      "name": "wall.mass.0",
+      "attr": 15
+    },
+    {
+      "id": 1,
+      "name": "wall.mass.6",
+      "attr": 15
+    },
+    {
+      "id": 2,
+      "name": "wall.mass.5",
+      "attr": 15
+    },
+    {
+      "id": 3,
+      "name": "wall.mass.4",
+      "attr": 15
+    },
+    {
+      "id": 4,
+      "name": "wall.mass.3",
+      "attr": 15
+    },
+    {
+      "id": 5,
+      "name": "wall.mass.2",
+      "attr": 15
+    },
+    {
+      "id": 6,
+      "name": "wall.mass.1",
+      "attr": 15
+    },
+    {
+      "id": 7,
+      "name": "wall.face.3",
+      "attr": 15
+    },
+    {
+      "id": 8,
+      "name": "wall.face.1",
+      "attr": 15
+    },
+    {
+      "id": 9,
+      "name": "wall.torch.left",
+      "attr": 31
+    },
+    {
+      "id": 10,
+      "name": "wall.face.2",
+      "attr": 15
+    },
+    {
+      "id": 11,
+      "name": "wall.face.0",
+      "attr": 15
+    },
+    {
+      "id": 12,
+      "name": "wall.face.2.niche",
+      "attr": 15
+    },
+    {
+      "id": 13,
+      "name": "wall.face.4",
+      "attr": 15
+    },
+    {
+      "id": 14,
+      "name": "wall.face.1.niche",
+      "attr": 15
+    },
+    {
+      "id": 15,
+      "name": "wall.torch.right",
+      "attr": 47
+    },
+    {
+      "id": 16,
+      "name": "wall.mass.0.rim-e",
+      "attr": 15
+    },
+    {
+      "id": 17,
+      "name": "floor.shadow.5",
+      "attr": 0
+    },
+    {
+      "id": 18,
+      "name": "floor.shadow.4",
+      "attr": 0
+    },
+    {
+      "id": 19,
+      "name": "floor.shadow.3",
+      "attr": 0
+    },
+    {
+      "id": 20,
+      "name": "floor.shadow.2",
+      "attr": 0
+    },
+    {
+      "id": 21,
+      "name": "floor.shadow.1",
+      "attr": 0
+    },
+    {
+      "id": 22,
+      "name": "floor.shadow.0",
+      "attr": 0
+    },
+    {
+      "id": 23,
+      "name": "wall.mass.2.rim-w",
+      "attr": 15
+    },
+    {
+      "id": 24,
+      "name": "wall.mass.1.rim-e",
+      "attr": 15
+    },
+    {
+      "id": 25,
+      "name": "floor.5",
+      "attr": 0
+    },
+    {
+      "id": 26,
+      "name": "floor.4",
+      "attr": 0
+    },
+    {
+      "id": 27,
+      "name": "floor.bones.1",
+      "attr": 0
+    },
+    {
+      "id": 28,
+      "name": "floor.2",
+      "attr": 0
+    },
+    {
+      "id": 29,
+      "name": "floor.1",
+      "attr": 0
+    },
+    {
+      "id": 30,
+      "name": "floor.0",
+      "attr": 0
+    },
+    {
+      "id": 31,
+      "name": "floor.6",
+      "attr": 0
+    },
+    {
+      "id": 32,
+      "name": "floor.3",
+      "attr": 0
+    },
+    {
+      "id": 33,
+      "name": "floor.bones.0",
+      "attr": 0
+    },
+    {
+      "id": 34,
+      "name": "wall.mass.0.rim-w",
+      "attr": 15
+    },
+    {
+      "id": 35,
+      "name": "wall.mass.2.rim-e",
+      "attr": 15
+    },
+    {
+      "id": 36,
+      "name": "pillar.0",
+      "attr": 15
+    },
+    {
+      "id": 37,
+      "name": "wall.mass.1.rim-w",
+      "attr": 15
+    },
+    {
+      "id": 38,
+      "name": "pillar.1",
+      "attr": 15
+    },
+    {
+      "id": 39,
+      "name": "floor.moss.0",
+      "attr": 0
+    },
+    {
+      "id": 40,
+      "name": "floor.moss.1",
+      "attr": 0
+    },
+    {
+      "id": 41,
+      "name": "wall.mass.2.rim-n",
+      "attr": 15
+    },
+    {
+      "id": 42,
+      "name": "wall.mass.0.rim-n",
+      "attr": 15
+    },
+    {
+      "id": 43,
+      "name": "wall.mass.1.rim-n",
+      "attr": 15
+    },
+    {
+      "id": 44,
+      "name": "wall.mass.0.rim-ne",
+      "attr": 15
+    },
+    {
+      "id": 45,
+      "name": "floor.exit.left",
+      "attr": 48
+    },
+    {
+      "id": 46,
+      "name": "floor.exit.right",
+      "attr": 48
+    },
+    {
+      "id": 47,
+      "name": "wall.mass.0.rim-nw",
+      "attr": 15
+    },
+    {
+      "id": 48,
+      "name": "gate.00",
+      "attr": 79
+    },
+    {
+      "id": 49,
+      "name": "gate.10",
+      "attr": 79
+    },
+    {
+      "id": 50,
+      "name": "gate.01",
+      "attr": 79
+    },
+    {
+      "id": 51,
+      "name": "gate.11",
+      "attr": 79
+    },
+    {
+      "id": 52,
+      "name": "gate.02",
+      "attr": 67
+    },
+    {
+      "id": 53,
+      "name": "gate.12",
+      "attr": 67
+    },
+    {
+      "id": 54,
+      "name": "wall.torch.left.rim-ne",
+      "attr": 31
+    },
+    {
+      "id": 55,
+      "name": "wall.torch.right.rim-nw",
+      "attr": 47
+    },
+    {
+      "id": 56,
+      "name": "pillar.0",
+      "attr": 15
+    },
+    {
+      "id": 57,
+      "name": "pillar.1",
+      "attr": 15
+    },
+    {
+      "id": 58,
+      "name": "wall.face.0.rim-ne",
+      "attr": 15
+    },
+    {
+      "id": 59,
+      "name": "wall.face.0.rim-nw",
+      "attr": 15
+    },
+    {
+      "id": 60,
+      "name": "wall.mass.2.rim-ne",
+      "attr": 15
+    },
+    {
+      "id": 61,
+      "name": "wall.mass.2.rim-nw",
+      "attr": 15
+    },
+    {
+      "id": 62,
+      "name": "gate.open.00",
+      "attr": 0
+    },
+    {
+      "id": 63,
+      "name": "gate.open.10",
+      "attr": 0
+    },
+    {
+      "id": 64,
+      "name": "gate.open.01",
+      "attr": 0
+    },
+    {
+      "id": 65,
+      "name": "gate.open.11",
+      "attr": 0
+    },
+    {
+      "id": 66,
+      "name": "gate.open.02",
+      "attr": 0
+    },
+    {
+      "id": 67,
+      "name": "gate.open.12",
+      "attr": 0
+    },
+    {
+      "id": 68,
+      "name": "well.00",
+      "attr": 15
+    },
+    {
+      "id": 69,
+      "name": "well.10",
+      "attr": 15
+    },
+    {
+      "id": 70,
+      "name": "well.01",
+      "attr": 15
+    },
+    {
+      "id": 71,
+      "name": "well.11",
+      "attr": 15
+    },
+    {
+      "id": 72,
+      "name": "pillar.0",
+      "attr": 15
+    },
+    {
+      "id": 73,
+      "name": "pillar.1",
+      "attr": 15
+    },
+    {
+      "id": 74,
+      "name": "water.1.edge",
+      "attr": 15
+    },
+    {
+      "id": 75,
+      "name": "water.0.edge",
+      "attr": 15
+    },
+    {
+      "id": 76,
+      "name": "water.0",
+      "attr": 15
+    },
+    {
+      "id": 77,
+      "name": "water.1",
+      "attr": 15
+    },
+    {
+      "id": 78,
+      "name": "floor.exit.north.4",
+      "attr": 48
+    },
+    {
+      "id": 79,
+      "name": "floor.exit.north.3",
+      "attr": 48
+    },
+    {
+      "id": 80,
+      "name": "wall.face.0.roots",
+      "attr": 15
+    },
+    {
+      "id": 81,
+      "name": "wall.face.0.roots.flip",
+      "attr": 15
+    },
+    {
+      "id": 82,
+      "name": "wall.face.1.rim-e.roots",
+      "attr": 15
+    },
+    {
+      "id": 83,
+      "name": "wall.face.1.roots",
+      "attr": 15
+    },
+    {
+      "id": 84,
+      "name": "wall.face.0.rim-w",
+      "attr": 15
+    },
+    {
+      "id": 85,
+      "name": "wall.face.0.rim-w.roots.flip",
+      "attr": 15
+    },
+    {
+      "id": 86,
+      "name": "wall.face.1.rim-e",
+      "attr": 15
+    },
+    {
+      "id": 87,
+      "name": "pillar.0",
+      "attr": 15
+    },
+    {
+      "id": 88,
+      "name": "floor.exit.east.2.shadow",
+      "attr": 48
+    },
+    {
+      "id": 89,
+      "name": "pillar.1",
+      "attr": 15
+    },
+    {
+      "id": 90,
+      "name": "floor.exit.east.2",
+      "attr": 48
+    },
+    {
+      "id": 91,
+      "name": "wall.face.0.rim-n",
+      "attr": 15
+    },
+    {
+      "id": 92,
+      "name": "wall.face.1.rim-ne",
+      "attr": 15
+    },
+    {
+      "id": 93,
+      "name": "wall.face.2.rim-nw",
+      "attr": 15
+    },
+    {
+      "id": 94,
+      "name": "door.south.0",
+      "attr": 79
+    },
+    {
+      "id": 95,
+      "name": "door.south.1",
+      "attr": 79
+    },
+    {
+      "id": 96,
+      "name": "floor.exit.north.5",
+      "attr": 48
+    },
+    {
+      "id": 97,
+      "name": "wall.face.0.rim-e",
+      "attr": 15
+    },
+    {
+      "id": 98,
+      "name": "floor.exit.west.0.shadow",
+      "attr": 48
+    },
+    {
+      "id": 99,
+      "name": "floor.exit.west.0",
+      "attr": 48
+    },
+    {
+      "id": 100,
+      "name": "wall.mass.1.rim-ne",
+      "attr": 15
+    },
+    {
+      "id": 101,
+      "name": "door.east.0",
+      "attr": 79
+    },
+    {
+      "id": 102,
+      "name": "door.east.1",
+      "attr": 79
+    },
+    {
+      "id": 103,
+      "name": "wall.face.0.niche",
+      "attr": 15
+    },
+    {
+      "id": 104,
+      "name": "wall.face.1.rim-w",
+      "attr": 15
+    },
+    {
+      "id": 105,
+      "name": "wall.mass.1.rim-nw",
+      "attr": 15
+    },
+    {
+      "id": 106,
+      "name": "urn",
+      "attr": 15
+    },
+    {
+      "id": 107,
+      "name": "wall.face.2.rim-e",
+      "attr": 15
+    },
+    {
+      "id": 108,
+      "name": "floor.gold.1",
+      "attr": 0
+    },
+    {
+      "id": 109,
+      "name": "floor.gold.0",
+      "attr": 0
+    },
+    {
+      "id": 110,
+      "name": "altar.0",
+      "attr": 15
+    },
+    {
+      "id": 111,
+      "name": "altar.1",
+      "attr": 15
+    },
+    {
+      "id": 112,
+      "name": "altar.2",
+      "attr": 15
+    },
+    {
+      "id": 113,
+      "name": "wall.face.2.rim-w",
+      "attr": 15
+    },
+    {
+      "id": 114,
+      "name": "floor.bones.0.shadow",
+      "attr": 0
+    },
+    {
+      "id": 115,
+      "name": "altar.0",
+      "attr": 15
+    },
+    {
+      "id": 116,
+      "name": "altar.1",
+      "attr": 15
+    },
+    {
+      "id": 117,
+      "name": "altar.2",
+      "attr": 15
+    },
+    {
+      "id": 118,
+      "name": "void",
+      "attr": 0
+    },
+    {
+      "id": 119,
+      "name": "floor.bones.1.shadow",
+      "attr": 0
+    }
+  ],
+  "grid": "4 x 4",
+  "start_room": 1,
+  "rooms": [
+    {
+      "slot": 0,
+      "file": "rooms/bone_pit.txt",
+      "name": "BONE PIT",
+      "distinct_tiles": 48,
+      "torches": 2,
+      "exits": {
+        "south": 4
+      },
+      "zone": "atrio",
+      "door": null,
+      "objects": [
+        "treasure at 16,3",
+        "potion at 3,7"
+      ],
+      "enemies": [
+        "skeleton at 9,2 h fast",
+        "bat at 13,6"
+      ]
+    },
+    {
+      "slot": 1,
+      "file": "rooms/moss_gate.txt",
+      "name": "THE MOSS GATE",
+      "distinct_tiles": 54,
+      "torches": 4,
+      "exits": {
+        "south": 5
+      },
+      "zone": "atrio",
+      "door": "portal",
+      "objects": [],
+      "enemies": []
+    },
+    {
+      "slot": 2,
+      "file": "rooms/old_well.txt",
+      "name": "THE OLD WELL",
+      "distinct_tiles": 49,
+      "torches": 2,
+      "exits": {
+        "south": 6
+      },
+      "zone": "atrio",
+      "door": null,
+      "objects": [
+        "key A at 3,2",
+        "treasure at 16,2"
+      ],
+      "enemies": [
+        "bat at 10,2"
+      ]
+    },
+    {
+      "slot": 3,
+      "file": "rooms/black_cistern.txt",
+      "name": "BLACK CISTERN",
+      "distinct_tiles": 48,
+      "torches": 2,
+      "exits": {
+        "south": 7
+      },
+      "zone": "B",
+      "door": null,
+      "objects": [
+        "key C at 9,5",
+        "potion at 16,7"
+      ],
+      "enemies": [
+        "skeleton at 9,2 h fast",
+        "bat at 3,5",
+        "bat at 16,5"
+      ]
+    },
+    {
+      "slot": 4,
+      "file": "rooms/root_cellar.txt",
+      "name": "ROOT CELLAR",
+      "distinct_tiles": 59,
+      "torches": 2,
+      "exits": {
+        "north": 0,
+        "south": 8,
+        "east": 5
+      },
+      "zone": "atrio",
+      "door": "A",
+      "objects": [
+        "potion at 16,2"
+      ],
+      "enemies": [
+        "bat at 9,5"
+      ]
+    },
+    {
+      "slot": 5,
+      "file": "rooms/crossroads.txt",
+      "name": "THE CROSSROADS",
+      "distinct_tiles": 55,
+      "torches": 2,
+      "exits": {
+        "north": 1,
+        "south": 9,
+        "west": 4,
+        "east": 6
+      },
+      "zone": "atrio",
+      "door": null,
+      "objects": [],
+      "enemies": [
+        "skeleton at 9,6 h fast"
+      ]
+    },
+    {
+      "slot": 6,
+      "file": "rooms/long_gallery.txt",
+      "name": "LONG GALLERY",
+      "distinct_tiles": 54,
+      "torches": 4,
+      "exits": {
+        "north": 2,
+        "west": 5,
+        "east": 7
+      },
+      "zone": "atrio",
+      "door": "B",
+      "objects": [
+        "treasure at 17,8"
+      ],
+      "enemies": [
+        "skeleton at 8,4 h fast",
+        "skeleton at 11,8 h fast"
+      ]
+    },
+    {
+      "slot": 7,
+      "file": "rooms/flooded_stair.txt",
+      "name": "FLOODED STAIR",
+      "distinct_tiles": 51,
+      "torches": 2,
+      "exits": {
+        "north": 3,
+        "south": 11,
+        "west": 6
+      },
+      "zone": "B",
+      "door": null,
+      "objects": [
+        "potion at 16,2"
+      ],
+      "enemies": [
+        "skeleton at 12,6 v fast",
+        "bat at 16,5"
+      ]
+    },
+    {
+      "slot": 8,
+      "file": "rooms/ossuary.txt",
+      "name": "OSSUARY",
+      "distinct_tiles": 51,
+      "torches": 2,
+      "exits": {
+        "north": 4,
+        "south": 12
+      },
+      "zone": "A",
+      "door": null,
+      "objects": [
+        "potion at 16,7"
+      ],
+      "enemies": [
+        "skeleton at 9,7 h fast",
+        "bat at 13,3"
+      ]
+    },
+    {
+      "slot": 9,
+      "file": "rooms/sunken_hall.txt",
+      "name": "SUNKEN HALL",
+      "distinct_tiles": 53,
+      "torches": 2,
+      "exits": {
+        "north": 5,
+        "east": 10
+      },
+      "zone": "atrio",
+      "door": "C",
+      "objects": [
+        "treasure at 9,7"
+      ],
+      "enemies": [
+        "skeleton at 12,6 h fast",
+        "bat at 4,6"
+      ]
+    },
+    {
+      "slot": 10,
+      "file": "rooms/amber_hall.txt",
+      "name": "AMBER HALL",
+      "distinct_tiles": 47,
+      "torches": 4,
+      "exits": {
+        "south": 14,
+        "west": 9
+      },
+      "zone": "C",
+      "door": null,
+      "objects": [
+        "potion at 16,2"
+      ],
+      "enemies": [
+        "skeleton at 9,3 h fast",
+        "skeleton at 8,7 h fast",
+        "bat at 15,5"
+      ]
+    },
+    {
+      "slot": 11,
+      "file": "rooms/drowned_shrine.txt",
+      "name": "DROWNED SHRINE",
+      "distinct_tiles": 50,
+      "torches": 2,
+      "exits": {
+        "north": 7
+      },
+      "zone": "B",
+      "door": null,
+      "objects": [
+        "seal at 10,4",
+        "treasure at 3,5"
+      ],
+      "enemies": [
+        "skeleton at 10,7 h fast",
+        "bat at 4,2",
+        "bat at 15,5"
+      ]
+    },
+    {
+      "slot": 12,
+      "file": "rooms/catacombs.txt",
+      "name": "CATACOMBS",
+      "distinct_tiles": 50,
+      "torches": 1,
+      "exits": {
+        "north": 8,
+        "east": 13
+      },
+      "zone": "A",
+      "door": null,
+      "objects": [
+        "key B at 16,2",
+        "treasure at 3,7"
+      ],
+      "enemies": [
+        "skeleton at 9,2 h fast",
+        "skeleton at 10,7 h fast",
+        "bat at 3,3"
+      ]
+    },
+    {
+      "slot": 13,
+      "file": "rooms/bone_shrine.txt",
+      "name": "BONE SHRINE",
+      "distinct_tiles": 50,
+      "torches": 2,
+      "exits": {
+        "west": 12
+      },
+      "zone": "A",
+      "door": null,
+      "objects": [
+        "seal at 10,3"
+      ],
+      "enemies": [
+        "skeleton at 10,5 h fast",
+        "bat at 4,3",
+        "bat at 15,3"
+      ]
+    },
+    {
+      "slot": 14,
+      "file": "rooms/treasury.txt",
+      "name": "TREASURY",
+      "distinct_tiles": 54,
+      "torches": 2,
+      "exits": {
+        "north": 10,
+        "east": 15
+      },
+      "zone": "C",
+      "door": null,
+      "objects": [
+        "treasure at 3,2",
+        "treasure at 16,2"
+      ],
+      "enemies": [
+        "skeleton at 9,7 h fast",
+        "skeleton at 9,3 h fast",
+        "bat at 4,6"
+      ]
+    },
+    {
+      "slot": 15,
+      "file": "rooms/sun_vault.txt",
+      "name": "SUN VAULT",
+      "distinct_tiles": 47,
+      "torches": 2,
+      "exits": {
+        "west": 14
+      },
+      "zone": "C",
+      "door": null,
+      "objects": [
+        "seal at 8,4"
+      ],
+      "enemies": [
+        "skeleton at 15,4 v fast",
+        "bat at 4,2",
+        "bat at 11,7"
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "file": "screens/title.txt",
+      "zone": "atrio",
+      "bottom_row": "JOYSTICK IN PORT 2",
+      "distinct_tiles": 46
+    },
+    {
+      "file": "screens/game_over.txt",
+      "zone": "A",
+      "bottom_row": "",
+      "distinct_tiles": 45
+    },
+    {
+      "file": "screens/victory.txt",
+      "zone": "atrio",
+      "bottom_row": "",
+      "distinct_tiles": 45
+    }
+  ],
+  "big_letters": {
+    "alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "bytes": 3120,
+    "styles": [
+      "logo",
+      "lost",
+      "won"
+    ]
+  },
+  "objects": 20,
+  "enemies": 34,
+  "solution": {
+    "order": [
+      "key A",
+      "door A",
+      "key B",
+      "door B",
+      "key C",
+      "door C",
+      "portal"
+    ],
+    "rooms_reached": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "seals_reached": 3,
+    "won": true,
+    "keys_without_door": []
+  },
+  "glyphs": " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-:./~*+@>",
+  "hero_frames": 8,
+  "music": {
+    "song_steps": 512,
+    "loop_frames": 2560,
+    "loop_seconds": 51.07,
+    "bpm": 150.4,
+    "songs": {
+      "theme": {
+        "steps": 512,
+        "frames": 2560,
+        "loops": true
+      },
+      "won": {
+        "steps": 32,
+        "frames": 160,
+        "loops": false
+      },
+      "lost": {
+        "steps": 32,
+        "frames": 160,
+        "loops": false
+      }
+    },
+    "effects": {
+      "slash": {
+        "number": 1,
+        "priority": 1,
+        "frames": 8
+      },
+      "hit": {
+        "number": 2,
+        "priority": 2,
+        "frames": 5
+      },
+      "dust": {
+        "number": 3,
+        "priority": 3,
+        "frames": 12
+      },
+      "pickup": {
+        "number": 4,
+        "priority": 3,
+        "frames": 16
+      },
+      "door": {
+        "number": 5,
+        "priority": 4,
+        "frames": 16
+      },
+      "hurt": {
+        "number": 6,
+        "priority": 5,
+        "frames": 16
+      },
+      "lost": {
+        "number": 7,
+        "priority": 6,
+        "frames": 50
+      },
+      "won": {
+        "number": 8,
+        "priority": 6,
+        "frames": 30
+      }
+    },
+    "effect_bytes": 364,
+    "instruments": [
+      "bass",
+      "lead",
+      "arpmin",
+      "arpmaj",
+      "kick",
+      "snare",
+      "hat"
+    ],
+    "patterns": [
+      "bass_bar",
+      "bass_half",
+      "bass_fill",
+      "lead_a",
+      "lead_b",
+      "arp_intro",
+      "arp_break",
+      "hats",
+      "beat",
+      "fill",
+      "half",
+      "won_bass",
+      "won_lead",
+      "won_arp",
+      "lost_bass",
+      "lost_lead",
+      "lost_arp",
+      "silence"
+    ],
+    "wave_entries": 27,
+    "data_bytes": 769
+  }
+}

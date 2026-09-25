@@ -1,0 +1,19 @@
+# Cryptmorrow room 14, zone C. Symbols: see dungeon.txt.
+name: TREASURY
+zone: C
+object: treasure 3 2
+object: treasure 16 2
+enemy: skeleton 9 7 h fast
+enemy: skeleton 9 3 h fast
+enemy: bat 4 6
+map:
+#########EE#########
+####T####..####t####
+##................##
+##.g..u......u..g.##
+##..####....####..##
+##..#nn#....#nn#..##
+##.................E
+##.................E
+##.g..u......u..g.##
+####################

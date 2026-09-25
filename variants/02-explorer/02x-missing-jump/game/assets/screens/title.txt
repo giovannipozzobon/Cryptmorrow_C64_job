@@ -1,0 +1,16 @@
+# Cryptmorrow title screen. Same symbols as the rooms (see
+# rooms/dungeon.txt); '_' is black: the logo is printed over rows
+# 0-1, the menu and PRESS FIRE over rows 7-9. The name is the text
+# of the bottom row.
+name: JOYSTICK IN PORT 2
+map:
+____________________
+____________________
+#########GG#########
+###T##r##GG##n##t###
+##.......GG.......##
+##.m..m........m.b##
+####################
+____________________
+____________________
+____________________

@@ -1,0 +1,25 @@
+{
+  "result": "FAIL",
+  "step": "01x-hires",
+  "prg_sha256": "f79fc64afc2e73ea7109c6fe8fe760bca00b3fc3766e1e3d6b761bffb0d5edc8",
+  "screenshots": [],
+  "segments": [],
+  "transitions": [],
+  "starts": [],
+  "events": [],
+  "data": {
+    "blocks": [
+      "tiles.bitmap",
+      "tiles.attr",
+      "flames.bin",
+      "font.bin",
+      "rooms.bin",
+      "zones.color"
+    ],
+    "code_end": "$0c09",
+    "lowest_data": "$8000",
+    "prg_bytes": 47105,
+    "checks": "each block equal to its generated file in the PRG and in memory at its address; the code ends below the data"
+  },
+  "error": "VIC set up as {'$d011': 59, '$d016': 8, '$d018': 24, 'bank': 2}, not {'$d011': 59, '$d016': 24, '$d018': 24, 'bank': 2}"
+}

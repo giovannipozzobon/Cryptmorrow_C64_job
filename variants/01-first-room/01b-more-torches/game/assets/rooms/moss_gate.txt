@@ -1,0 +1,16 @@
+# Cryptmorrow room 1, the start. Symbols: see dungeon.txt.
+# The gate to the north is the portal: it opens when the explorer
+# carries the three seals, and leads out of the crypt.
+name: THE MOSS GATE
+door: portal
+map:
+#########GG#########
+###T#T###GG###t#t###
+##.......GG.......##
+##....m.......m...##
+##T..............t##
+##.P............P.##
+##mP.......m....Pm##
+###..............###
+##..m.....m.....m.##
+#########EE#########

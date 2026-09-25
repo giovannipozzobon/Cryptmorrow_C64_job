@@ -1,0 +1,14 @@
+# Cryptmorrow room 5. Symbols: see dungeon.txt.
+name: THE CROSSROADS
+enemy: skeleton 9 6 h fast
+map:
+#########EE#########
+#####T###..###t#####
+##..P..........P..##
+##..P....mm....P..##
+E..................E
+E..................E
+##..P..........P..##
+##..P..........P..##
+##.m.............m##
+#########EE#########

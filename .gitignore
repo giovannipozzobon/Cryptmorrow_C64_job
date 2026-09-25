@@ -1,0 +1,10 @@
+# Written by the builds and the tests. The reference programs are in
+# reference/ and releases/; the reports of the variants' tests are kept
+# in their folders.
+build/
+__pycache__/
+*.py[cod]
+*.log
+/evidence/
+/chain/evidence/
+/out/

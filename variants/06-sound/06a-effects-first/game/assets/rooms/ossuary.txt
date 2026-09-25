@@ -1,0 +1,17 @@
+# Cryptmorrow room 8, zone A. Symbols: see dungeon.txt.
+zone: A
+name: OSSUARY
+object: potion 16 7
+enemy: skeleton 9 7 h fast
+enemy: bat 13 3
+map:
+#########EE#########
+##n##T###..###t##n##
+##................##
+##..b.....b....b..##
+##...P........P...##
+##...P........P...##
+##..b....b......b.##
+##................##
+##..........b.....##
+####EE##############

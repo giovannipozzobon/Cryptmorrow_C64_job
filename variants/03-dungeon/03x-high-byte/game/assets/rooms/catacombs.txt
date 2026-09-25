@@ -1,0 +1,19 @@
+# Cryptmorrow room 12, zone A. Symbols: see dungeon.txt.
+zone: A
+name: CATACOMBS
+object: key B 16 2
+object: treasure 3 7
+enemy: skeleton 9 2 h fast
+enemy: skeleton 10 7 h fast
+enemy: bat 3 3
+map:
+####EE##############
+##n#..#n####t####n##
+##................##
+##................##
+##..############..##
+##..#n###n###n##..##
+##..b..............E
+##.........b.......E
+##................##
+####################

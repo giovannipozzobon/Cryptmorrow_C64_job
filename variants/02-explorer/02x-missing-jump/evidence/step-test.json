@@ -1,0 +1,65 @@
+{
+  "result": "FAIL",
+  "step": "02x-missing-jump",
+  "prg_sha256": "be1f3c294afe555e14938acd6e6acfb35e0e1ab2d19183697b989727a138c20b",
+  "screenshots": [
+    {
+      "file": "variants/02-explorer/02x-missing-jump/evidence/step02-explorer.png",
+      "width": 384,
+      "height": 272,
+      "sha256": "3c1e574d2aa39f05a77529c37b8a2557b13dd04d2e4004af45805a69901c292a",
+      "frame": 16,
+      "room": 1,
+      "ended": null,
+      "idle_frames_during_export": 1
+    }
+  ],
+  "segments": [
+    {
+      "joy": "00000",
+      "frames": 16,
+      "from": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [],
+      "enemies_to": []
+    }
+  ],
+  "transitions": [],
+  "starts": [
+    {
+      "draw_room_cycles": 181254,
+      "torches": 4,
+      "mode": null,
+      "interrupts_while_starting": null
+    }
+  ],
+  "events": [],
+  "data": {
+    "blocks": [
+      "hero.sprites",
+      "tiles.bitmap",
+      "tiles.attr",
+      "flames.bin",
+      "font.bin",
+      "rooms.bin",
+      "zones.color"
+    ],
+    "code_end": "$0e00",
+    "lowest_data": "$4000",
+    "prg_bytes": 47105,
+    "checks": "each block equal to its generated file in the PRG and in memory at its address; the code ends below the data"
+  },
+  "error": "game 1, Frame 18: C64 {'x': 149, 'y': 111, 'dir': 3, 'moving': 1, 'frame': 0, 'timer': 1, 'pointer': 6} != model {'x': 147, 'y': 111, 'dir': 2, 'moving': 1, 'frame': 0, 'timer': 1, 'pointer': 4}"
+}

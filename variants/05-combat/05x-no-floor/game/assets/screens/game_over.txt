@@ -1,0 +1,16 @@
+# Cryptmorrow end screen after a lost game: the gate still
+# shut, bones on the floor, in the colours of zone A. '_' is black:
+# GAME OVER is printed over rows 0-1, the score over rows 7-9.
+name:
+zone: A
+map:
+____________________
+____________________
+#########GG#########
+##n##T###GG###t##n##
+##b..b...GG....b..##
+##...b.......b...b##
+####################
+____________________
+____________________
+____________________

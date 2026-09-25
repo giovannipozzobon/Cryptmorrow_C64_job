@@ -1,0 +1,317 @@
+{
+  "result": "PASS",
+  "step": "02a-faster-explorer",
+  "prg_sha256": "735e03e98ff9b1bdd02203b1483757fec8128c0330c0ab60e3b37128954c745d",
+  "screenshots": [
+    {
+      "file": "variants/02-explorer/02a-faster-explorer/evidence/v02a-faster-explorer.png",
+      "width": 384,
+      "height": 272,
+      "sha256": "4153a33ab58c70d1b979b46ee166cdf3073790fea66500b15560ba183fd7b101",
+      "frame": 462,
+      "room": 1,
+      "ended": null,
+      "idle_frames_during_export": 1
+    }
+  ],
+  "segments": [
+    {
+      "joy": "00000",
+      "frames": 16,
+      "from": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "01000",
+      "frames": 10,
+      "from": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        168,
+        111,
+        null
+      ],
+      "steps": 20,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00100",
+      "frames": 60,
+      "from": [
+        1,
+        168,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        58,
+        111,
+        null
+      ],
+      "steps": 110,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00001",
+      "frames": 60,
+      "from": [
+        1,
+        58,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        58,
+        43,
+        null
+      ],
+      "steps": 68,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "01000",
+      "frames": 100,
+      "from": [
+        1,
+        58,
+        43,
+        null
+      ],
+      "to": [
+        1,
+        126,
+        43,
+        null
+      ],
+      "steps": 68,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00010",
+      "frames": 100,
+      "from": [
+        1,
+        126,
+        43,
+        null
+      ],
+      "to": [
+        1,
+        126,
+        149,
+        null
+      ],
+      "steps": 106,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00100",
+      "frames": 100,
+      "from": [
+        1,
+        126,
+        149,
+        null
+      ],
+      "to": [
+        1,
+        26,
+        149,
+        null
+      ],
+      "steps": 100,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00000",
+      "frames": 16,
+      "from": [
+        1,
+        26,
+        149,
+        null
+      ],
+      "to": [
+        1,
+        26,
+        149,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [],
+      "enemies_to": []
+    }
+  ],
+  "transitions": [],
+  "starts": [
+    {
+      "draw_room_cycles": 181253,
+      "torches": 4,
+      "mode": null,
+      "interrupts_while_starting": null
+    }
+  ],
+  "events": [],
+  "data": {
+    "blocks": [
+      "hero.sprites",
+      "tiles.bitmap",
+      "tiles.attr",
+      "flames.bin",
+      "font.bin",
+      "rooms.bin",
+      "zones.color"
+    ],
+    "code_end": "$0e03",
+    "lowest_data": "$4000",
+    "prg_bytes": 47105,
+    "checks": "each block equal to its generated file in the PRG and in memory at its address; the code ends below the data"
+  },
+  "frame_work": {
+    "frames_measured": 462,
+    "cycles_max": 1604,
+    "worst_game": 1,
+    "worst_frame": 296,
+    "worst_room": 1,
+    "share_of_frame_max": 0.082,
+    "method": "raster position at joy_ready and at the next main_loop; frames that draw a room not counted; frames counted from each start of the program"
+  },
+  "seen": {
+    "pointers": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "blade": [],
+    "enemy_pointers": [],
+    "hidden": 0,
+    "flash": 0,
+    "blocked_dirs": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "blocks": [
+      1,
+      2
+    ],
+    "door_blocks": [
+      1
+    ],
+    "horizontal": 0,
+    "up_wins": 0,
+    "potion_refused": 0,
+    "still": 0,
+    "clamp": 0
+  },
+  "totals": {
+    "frames": 463,
+    "near_hits": 0,
+    "effects_started": {},
+    "refused": 0,
+    "replaced": 0,
+    "songs": [],
+    "frames_by_mode": {
+      "MUSIC": 0,
+      "FX": 0,
+      "SILENT": 0
+    }
+  },
+  "checked_frames": 463,
+  "restarts": 0,
+  "ends_of_games": [],
+  "total_steps": 472,
+  "blocked_frames": 194,
+  "shows": {
+    "frames checked against the model": {
+      "ok": true,
+      "detail": 463
+    },
+    "the four flame phases": {
+      "ok": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "all eight walking frames": {
+      "ok": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "stopped in all four directions": {
+      "ok": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "stopped by a wall and by a door": {
+      "ok": true,
+      "detail": [
+        1,
+        2
+      ]
+    },
+    "horizontal wins over vertical": {
+      "ok": false,
+      "detail": 0
+    },
+    "up wins over down": {
+      "ok": false,
+      "detail": 0
+    }
+  }
+}

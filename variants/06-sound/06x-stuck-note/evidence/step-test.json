@@ -1,0 +1,181 @@
+{
+  "result": "FAIL",
+  "step": "06x-stuck-note",
+  "prg_sha256": "1ba31effcb992990c87c4e1bcbbdc7e7087fa593b097d6746007572d933cbc81",
+  "screenshots": [
+    {
+      "file": "variants/06-sound/06x-stuck-note/evidence/step06-start.png",
+      "width": 384,
+      "height": 272,
+      "sha256": "9b3eb48a72908d22d46b522a66596addc9cb6045fb55eadededa5a9cd126097f",
+      "frame": 16,
+      "room": 1,
+      "ended": null,
+      "idle_frames_during_export": 1
+    }
+  ],
+  "segments": [
+    {
+      "joy": "00000",
+      "frames": 16,
+      "from": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00000",
+      "frames": 0,
+      "from": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "steps": 0,
+      "expected": "idle",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00001",
+      "frames": 60,
+      "from": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        148,
+        51,
+        null
+      ],
+      "steps": 60,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00001",
+      "frames": 8,
+      "from": [
+        1,
+        148,
+        51,
+        null
+      ],
+      "to": [
+        1,
+        148,
+        51,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "01010",
+      "frames": 24,
+      "from": [
+        1,
+        148,
+        51,
+        null
+      ],
+      "to": [
+        1,
+        172,
+        51,
+        null
+      ],
+      "steps": 24,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00011",
+      "frames": 8,
+      "from": [
+        1,
+        172,
+        51,
+        null
+      ],
+      "to": [
+        1,
+        172,
+        43,
+        null
+      ],
+      "steps": 8,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    }
+  ],
+  "transitions": [],
+  "starts": [
+    {
+      "draw_room_cycles": 192951,
+      "torches": 4,
+      "mode": "MUSIC",
+      "interrupts_while_starting": 20
+    },
+    {
+      "draw_room_cycles": 185447,
+      "torches": 4,
+      "mode": "FX",
+      "interrupts_while_starting": 19
+    }
+  ],
+  "events": [
+    {
+      "game": 2,
+      "frame": 0,
+      "event": "program loaded and started again"
+    }
+  ],
+  "data": {
+    "blocks": [
+      "hero.sprites",
+      "objects.sprites",
+      "combat.sprites",
+      "tiles.bitmap",
+      "tiles.attr",
+      "flames.bin",
+      "font.bin",
+      "doors.bin",
+      "rooms.bin",
+      "zones.color",
+      "music (1133 bytes)"
+    ],
+    "code_end": "$1b40",
+    "lowest_data": "$4000",
+    "prg_bytes": 48238,
+    "checks": "each block equal to its generated file in the PRG and in memory at its address; the code ends below the data"
+  },
+  "error": "game 2, Frame 119: sound state differs from the model (C64, model): {'fx_pos': (1, 2)}"
+}

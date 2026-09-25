@@ -1,0 +1,15 @@
+# Cryptmorrow end screen after a won game: the gate open on
+# the world outside. '_' is black: VICTORY is printed over rows 0-1,
+# the score over rows 7-9.
+name:
+map:
+____________________
+____________________
+#########OO#########
+###T##r##OO##r##t###
+##.......OO.......##
+##.m..m...m....m..##
+####################
+____________________
+____________________
+____________________

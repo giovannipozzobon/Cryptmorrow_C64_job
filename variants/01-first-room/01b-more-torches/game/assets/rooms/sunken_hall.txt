@@ -1,0 +1,18 @@
+# Cryptmorrow room 9, atrio. Symbols: see dungeon.txt.
+# Door C to the east: the way into the amber zone.
+name: SUNKEN HALL
+door: C
+object: treasure 9 7
+enemy: skeleton 12 6 h fast
+enemy: bat 4 6
+map:
+#########EE#########
+####T####..####t####
+##................##
+##..ww........ww..##
+##..ww..P..P..ww..##
+##......P..P.......D
+##.m...............D
+##..ww........ww..##
+##..ww..m.....ww..##
+####################

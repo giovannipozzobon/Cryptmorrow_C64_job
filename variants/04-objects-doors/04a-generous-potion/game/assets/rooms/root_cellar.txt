@@ -1,0 +1,17 @@
+# Cryptmorrow room 4. Symbols: see dungeon.txt.
+# Door A to the south: the way into the ossuary.
+name: ROOT CELLAR
+door: A
+object: potion 16 2
+enemy: bat 9 5
+map:
+##########EE########
+###T#r##rr..##tr####
+##....##....##....##
+##....#r....r#....##
+##...P........P....E
+##...P........P....E
+##................##
+####..mm....mm..####
+##................##
+#########DD#########

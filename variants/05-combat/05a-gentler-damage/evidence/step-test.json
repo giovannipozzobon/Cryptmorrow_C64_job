@@ -1,0 +1,827 @@
+{
+  "result": "PASS",
+  "step": "05a-gentler-damage",
+  "prg_sha256": "df207855f56fdba4d172033074908ae0ae4b4e3abf81f45588f24637d79754c4",
+  "screenshots": [
+    {
+      "file": "variants/05-combat/05a-gentler-damage/evidence/v05a-game-over.png",
+      "width": 384,
+      "height": 272,
+      "sha256": "15cbb979596f0f550a98575e86b6eea3d0f194e2d9d3a87b48924e7fb39d1bea",
+      "frame": 1319,
+      "room": 5,
+      "ended": "lost",
+      "idle_frames_during_export": 1
+    }
+  ],
+  "segments": [
+    {
+      "joy": "00000",
+      "frames": 16,
+      "from": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00010",
+      "frames": 39,
+      "from": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        148,
+        150,
+        null
+      ],
+      "steps": 39,
+      "expected": "moves",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00010",
+      "frames": 12,
+      "from": [
+        1,
+        148,
+        150,
+        null
+      ],
+      "to": [
+        5,
+        148,
+        30,
+        null
+      ],
+      "steps": 12,
+      "expected": 5,
+      "enemies_from": [],
+      "enemies_to": [
+        [
+          1,
+          145,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00010",
+      "frames": 86,
+      "from": [
+        5,
+        148,
+        30,
+        null
+      ],
+      "to": [
+        5,
+        148,
+        116,
+        null
+      ],
+      "steps": 86,
+      "expected": "moves",
+      "enemies_from": [
+        [
+          1,
+          145,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          214,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "01000",
+      "frames": 52,
+      "from": [
+        5,
+        148,
+        116,
+        null
+      ],
+      "to": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "steps": 52,
+      "expected": "moves",
+      "enemies_from": [
+        [
+          1,
+          214,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          162,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00000",
+      "frames": 204,
+      "from": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "to": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [
+        [
+          1,
+          162,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          189,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00000",
+      "frames": 45,
+      "from": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "to": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [
+        [
+          1,
+          189,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          211,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00000",
+      "frames": 253,
+      "from": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "to": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [
+        [
+          1,
+          211,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          189,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00000",
+      "frames": 45,
+      "from": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "to": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [
+        [
+          1,
+          189,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          211,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00000",
+      "frames": 253,
+      "from": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "to": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [
+        [
+          1,
+          211,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          189,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00000",
+      "frames": 45,
+      "from": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "to": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [
+        [
+          1,
+          189,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          211,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00000",
+      "frames": 253,
+      "from": [
+        5,
+        200,
+        116,
+        null
+      ],
+      "to": [
+        5,
+        200,
+        116,
+        "lost"
+      ],
+      "steps": 0,
+      "expected": "ending",
+      "enemies_from": [
+        [
+          1,
+          211,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          189,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00000",
+      "frames": 16,
+      "from": [
+        5,
+        200,
+        116,
+        "lost"
+      ],
+      "to": [
+        5,
+        200,
+        116,
+        "lost"
+      ],
+      "steps": 0,
+      "expected": "still",
+      "enemies_from": [
+        [
+          1,
+          189,
+          116
+        ]
+      ],
+      "enemies_to": [
+        [
+          1,
+          189,
+          116
+        ]
+      ]
+    },
+    {
+      "joy": "00000",
+      "frames": 16,
+      "from": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "to": [
+        1,
+        148,
+        111,
+        null
+      ],
+      "steps": 0,
+      "expected": "blocked",
+      "enemies_from": [],
+      "enemies_to": []
+    }
+  ],
+  "transitions": [
+    {
+      "from": 1,
+      "draw_cycles": 184149,
+      "blank_frames": null,
+      "to": 5,
+      "side": "south",
+      "zone": 0,
+      "frame": 63,
+      "entry": [
+        148,
+        26
+      ]
+    }
+  ],
+  "starts": [
+    {
+      "draw_room_cycles": 181054,
+      "torches": 4,
+      "mode": null,
+      "interrupts_while_starting": null
+    },
+    {
+      "draw_room_cycles": 181058,
+      "torches": 4,
+      "mode": null,
+      "interrupts_while_starting": null
+    }
+  ],
+  "events": [
+    {
+      "game": 1,
+      "frame": 181,
+      "room": 5,
+      "event": "hurt by enemy 0"
+    },
+    {
+      "game": 1,
+      "frame": 409,
+      "room": 5,
+      "event": "hurt by enemy 0"
+    },
+    {
+      "game": 1,
+      "frame": 454,
+      "room": 5,
+      "event": "hurt by enemy 0"
+    },
+    {
+      "game": 1,
+      "frame": 707,
+      "room": 5,
+      "event": "hurt by enemy 0"
+    },
+    {
+      "game": 1,
+      "frame": 752,
+      "room": 5,
+      "event": "hurt by enemy 0"
+    },
+    {
+      "game": 1,
+      "frame": 1005,
+      "room": 5,
+      "event": "hurt by enemy 0"
+    },
+    {
+      "game": 1,
+      "frame": 1050,
+      "room": 5,
+      "event": "hurt by enemy 0"
+    },
+    {
+      "game": 1,
+      "frame": 1303,
+      "room": 5,
+      "event": "hurt by enemy 0"
+    },
+    {
+      "game": 1,
+      "frame": 1303,
+      "room": 5,
+      "event": "GAME OVER"
+    },
+    {
+      "game": 2,
+      "frame": 0,
+      "event": "program loaded and started again"
+    }
+  ],
+  "data": {
+    "blocks": [
+      "hero.sprites",
+      "objects.sprites",
+      "combat.sprites",
+      "tiles.bitmap",
+      "tiles.attr",
+      "flames.bin",
+      "font.bin",
+      "doors.bin",
+      "rooms.bin",
+      "zones.color"
+    ],
+    "code_end": "$173e",
+    "lowest_data": "$4000",
+    "prg_bytes": 47105,
+    "checks": "each block equal to its generated file in the PRG and in memory at its address; the code ends below the data"
+  },
+  "hud": {
+    "values_tested": [
+      [
+        3,
+        2,
+        1,
+        12345
+      ],
+      [
+        8,
+        0,
+        0,
+        0
+      ]
+    ],
+    "hud_update_cycles": 3579
+  },
+  "frame_work": {
+    "frames_measured": 1334,
+    "cycles_max": 11912,
+    "worst_game": 1,
+    "worst_frame": 1303,
+    "worst_room": 5,
+    "share_of_frame_max": 0.606,
+    "method": "raster position at joy_ready and at the next main_loop; frames that draw a room not counted; frames counted from each start of the program"
+  },
+  "changes_of_room": {
+    "count": 1,
+    "draw_cycles_min": 184149,
+    "draw_cycles_max": 184149,
+    "openings_used": [
+      "1 south"
+    ]
+  },
+  "seen": {
+    "pointers": [
+      0,
+      1,
+      6,
+      7
+    ],
+    "blade": [],
+    "enemy_pointers": [
+      32,
+      33
+    ],
+    "hidden": 105,
+    "flash": 0,
+    "blocked_dirs": [],
+    "blocks": [],
+    "door_blocks": [],
+    "horizontal": 0,
+    "up_wins": 0,
+    "potion_refused": 0,
+    "still": 0,
+    "clamp": 0
+  },
+  "totals": {
+    "frames": 1336,
+    "near_hits": 0,
+    "effects_started": {},
+    "refused": 0,
+    "replaced": 0,
+    "songs": [],
+    "frames_by_mode": {
+      "MUSIC": 0,
+      "FX": 0,
+      "SILENT": 0
+    }
+  },
+  "checked_frames": 1336,
+  "restarts": 1,
+  "ends_of_games": [
+    {
+      "game": 1,
+      "how": "lost",
+      "frame": 1303,
+      "room": 5,
+      "mode": null,
+      "energy": 0,
+      "keys": 0,
+      "seals": 0,
+      "score": 0,
+      "doors_open": 0,
+      "objects_taken": [],
+      "test_help": [],
+      "joystick_only": true
+    }
+  ],
+  "total_steps": 189,
+  "blocked_frames": 0,
+  "shows": {
+    "frames checked against the model": {
+      "ok": true,
+      "detail": 1336
+    },
+    "the four flame phases": {
+      "ok": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "every enemy of the dungeon defeated": {
+      "ok": false,
+      "detail": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          12,
+          1
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          13,
+          1
+        ],
+        [
+          13,
+          2
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          14,
+          1
+        ],
+        [
+          14,
+          2
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          2
+        ]
+      ]
+    },
+    "the blade in four directions": {
+      "ok": false,
+      "detail": []
+    },
+    "every frame of the enemies": {
+      "ok": false,
+      "detail": [
+        32,
+        33
+      ]
+    },
+    "the explorer blinking, an enemy flashing": {
+      "ok": false,
+      "detail": [
+        105,
+        0
+      ]
+    },
+    "a hit by the point half way back": {
+      "ok": false,
+      "detail": 0
+    },
+    "blows that only hurt": {
+      "ok": false,
+      "detail": null
+    },
+    "GAME OVER with the joystick only": {
+      "ok": true,
+      "detail": 1
+    },
+    "energy stopped at zero: a touch with one cell left": {
+      "ok": false,
+      "detail": 0
+    },
+    "a slow skeleton": {
+      "ok": false,
+      "detail": null
+    },
+    "won and lost with the joystick only, lost with help": {
+      "ok": false,
+      "detail": [
+        [
+          "lost",
+          true
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+# Cryptmorrow room 11, zone B. Symbols: see dungeon.txt.
+# The second seal lies before the altar.
+name: DROWNED SHRINE
+zone: B
+object: seal 10 4
+object: treasure 3 5
+enemy: skeleton 10 7 h fast
+enemy: bat 4 2
+enemy: bat 15 5
+map:
+#########EE#########
+####T####..####t####
+##................##
+##.ww....AAA....ww##
+##.ww...........ww##
+##....P......P....##
+##....P......P....##
+##.ww...........ww##
+##.ww.....m.....ww##
+####################

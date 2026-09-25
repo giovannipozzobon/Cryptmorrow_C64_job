@@ -1,0 +1,19 @@
+# Cryptmorrow room 15, zone C. Symbols: see dungeon.txt.
+# The third seal lies before the altar.
+name: SUN VAULT
+zone: C
+object: seal 8 4
+enemy: skeleton 15 4 v fast
+enemy: bat 4 2
+enemy: bat 11 7
+map:
+####################
+####T##########t####
+##................##
+##..g..AAA....g...##
+##................##
+##....P......P....##
+E.....P......P....##
+E.................##
+##..g..........g..##
+####################

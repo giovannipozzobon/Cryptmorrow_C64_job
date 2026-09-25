@@ -1,0 +1,16 @@
+# Cryptmorrow room 2. Symbols: see dungeon.txt.
+name: THE OLD WELL
+object: key A 3 2
+object: treasure 16 2
+enemy: bat 10 2
+map:
+####################
+####T#########t#####
+##................##
+##..m..........m..##
+##.......WW.......##
+##.......WW.......##
+##..P..........P..##
+##..P..........P..##
+##.m............m.##
+################EE##

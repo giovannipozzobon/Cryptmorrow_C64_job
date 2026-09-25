@@ -1,0 +1,19 @@
+# Cryptmorrow room 10, zone C. Symbols: see dungeon.txt.
+# Door C of the sunken hall opens on its west side.
+name: AMBER HALL
+zone: C
+object: potion 16 2
+enemy: skeleton 9 3 h fast
+enemy: skeleton 8 7 h fast
+enemy: bat 15 5
+map:
+####################
+####T####tT####t####
+##................##
+##..u..........u..##
+##....P......P....##
+E.....P......P....##
+E.................##
+##..u..........u..##
+##.g............g.##
+#########EE#########

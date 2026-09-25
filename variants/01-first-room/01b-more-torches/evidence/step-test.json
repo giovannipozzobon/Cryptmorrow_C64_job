@@ -1,0 +1,125 @@
+{
+  "result": "PASS",
+  "step": "01b-more-torches",
+  "prg_sha256": "e9bd2b2fadbf70baef5653a68fd6a5572f65f9b209bb1647e5bf19cff70d38b9",
+  "screenshots": [
+    {
+      "file": "variants/01-first-room/01b-more-torches/evidence/step01-first-room.png",
+      "width": 384,
+      "height": 272,
+      "sha256": "9af482acf97f0ae0f1b9f1cf0932b371e3b4a2ba2a1599c2d90668f555d221bc",
+      "frame": 64,
+      "room": 1,
+      "ended": null,
+      "idle_frames_during_export": 2
+    }
+  ],
+  "segments": [
+    {
+      "joy": "00000",
+      "frames": 64,
+      "from": [
+        1,
+        null,
+        null,
+        null
+      ],
+      "to": [
+        1,
+        null,
+        null,
+        null
+      ],
+      "steps": 0,
+      "expected": "still",
+      "enemies_from": [],
+      "enemies_to": []
+    },
+    {
+      "joy": "00000",
+      "frames": 448,
+      "from": [
+        1,
+        null,
+        null,
+        null
+      ],
+      "to": [
+        1,
+        null,
+        null,
+        null
+      ],
+      "steps": 0,
+      "expected": "still",
+      "enemies_from": [],
+      "enemies_to": []
+    }
+  ],
+  "transitions": [],
+  "starts": [
+    {
+      "draw_room_cycles": 180236,
+      "torches": 6,
+      "mode": null,
+      "interrupts_while_starting": null
+    }
+  ],
+  "events": [],
+  "data": {
+    "blocks": [
+      "tiles.bitmap",
+      "tiles.attr",
+      "flames.bin",
+      "font.bin",
+      "rooms.bin",
+      "zones.color"
+    ],
+    "code_end": "$0c09",
+    "lowest_data": "$8000",
+    "prg_bytes": 47105,
+    "checks": "each block equal to its generated file in the PRG and in memory at its address; the code ends below the data"
+  },
+  "seen": {
+    "pointers": [],
+    "blade": [],
+    "enemy_pointers": [],
+    "hidden": 0,
+    "flash": 0,
+    "blocked_dirs": [],
+    "blocks": [],
+    "door_blocks": [],
+    "horizontal": 0,
+    "up_wins": 0,
+    "potion_refused": 0,
+    "still": 0,
+    "clamp": 0
+  },
+  "totals": {
+    "frames": 514,
+    "near_hits": 0,
+    "effects_started": {},
+    "refused": 0,
+    "replaced": 0,
+    "songs": [],
+    "frames_by_mode": {
+      "MUSIC": 0,
+      "FX": 0,
+      "SILENT": 0
+    }
+  },
+  "checked_frames": 514,
+  "restarts": 0,
+  "ends_of_games": [],
+  "total_steps": 0,
+  "blocked_frames": 0,
+  "shows": {
+    "frames checked against the model": 514,
+    "the four flame phases": [
+      0,
+      1,
+      2,
+      3
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "result": "FAIL",
+  "scope": "The complete game (1.0.1, harder): the PRG unpacked, the title with its menu of audio modes and PRESS FIRE, the whole dungeon (sixteen rooms in four zones, objects, doors, the portal, explorer, sword, skeletons and bats, damage, HUD), the end of a game in the room and on its end screen with score, seals and rooms, the way back to the title; the music, its pieces for the end of a game, the sound effects and silence, no note left sounding; won and lost games with the joystick only, seven games without loading again; the memory map",
+  "prg_sha256": "3f6a20e510b0860a369196035ae08b949ea12f1c9a2c3172fde5692bd8dea34c",
+  "screenshots": [],
+  "segments": [],
+  "transitions": [],
+  "screens": [],
+  "events": [],
+  "exit_thresholds": {
+    "NORTH_EDGE": 18,
+    "SOUTH_EDGE": 158,
+    "WEST_EDGE": 1,
+    "EAST_EDGE": 295
+  },
+  "error": "After the start: block 0x4000 not in place"
+}

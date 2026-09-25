@@ -1,0 +1,19 @@
+# Cryptmorrow room 13, zone A. Symbols: see dungeon.txt.
+# The first seal lies before the altar.
+zone: A
+name: BONE SHRINE
+object: seal 10 3
+enemy: skeleton 10 5 h fast
+enemy: bat 4 3
+enemy: bat 15 3
+map:
+####################
+#######T#####t######
+##.......AAA......##
+##................##
+##....P.......P...##
+##....P.......P...##
+E.................##
+E...b.........b...##
+##..m..........m..##
+####################
