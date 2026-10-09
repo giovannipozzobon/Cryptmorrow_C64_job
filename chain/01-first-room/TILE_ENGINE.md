@@ -812,32 +812,670 @@ cicli per stanza, quasi un frame.
 
 ---
 
-## 9. Testo e torce: il disegno "a cella singola"
+## 9. Il testo
 
-### 9.1 `print_text` ([text.asm:13-96](game/src/text.asm#L13-L96))
+Testo e torce condividono la stessa idea: si modifica **una sola cella** del
+bitmap copiandoci 8 byte. Le metatile, invece, lavorano a gruppi di 2×2 celle.
 
-Formato della stringa: `colonna, riga, colore, codici glifo…, $FF`.
+Gli esempi numerici di questa sezione e della successiva sono **valori reali**
+letti dal `cryptmorrow.prg` compilato per la stanza iniziale, *The Moss Gate*.
 
-- Calcola gli indirizzi di partenza con le tabelle precalcolate
-  `screen_rows_*` (riga×40) e `bitmap_rows_*` (riga×320), più colonna e
-  colonna×8.
-- Per ogni carattere: `glyph = FONT + codice*8`, copia di 8 byte nella cella,
-  poi `screen = colore<<4`.
-- I glifi usano solo il codice pixel `01`, quindi basta il nibble alto della
-  screen RAM e la Color RAM non serve.
+### 9.1 Il font: 3×5 pixel dentro una cella 4×8
 
-### 9.2 `animate_torches` ([room.asm:294-322](game/src/room.asm#L294-L322))
+Il font è definito in `game/assets/font.py`. Ogni carattere è un disegno di
+3×5 pixel logici, collocato in una cella multicolor da 4×8 pixel:
 
-`flame_src = FLAMES + torch_phase*8`. Per ogni torcia registrata copia gli 8
-byte del fotogramma nella cella della fiamma. I colori di quella cella sono
-fissati in fase di build (`FLAME_PALETTE` rosso/arancio/giallo, con il
-parametro `forced` di `encode_cell`). I 4 fotogrammi quindi condividono gli
-stessi colori e serve riscrivere **solo il bitmap**, non la screen RAM né la
-Color RAM.
+```
+colonna:  0 1 2 3
+riga 0    . . . .     ← vuota (GLYPH_TOP = 1)
+riga 1    . # . .     ┐
+riga 2    # . # .     │
+riga 3    # # # .     │ 5 righe di glifo
+riga 4    # . # .     │
+riga 5    # . # .     ┘
+riga 6    . . . .     ┐ vuote: spazio fra le righe di testo
+riga 7    . . . .     ┘
+          └─ la colonna 3 è sempre vuota: spazio fra le lettere
+```
+
+Ogni pixel acceso usa il **codice 01**; quelli spenti usano 00. `glyph_bytes`
+aggiunge uno `"0"` a destra della riga di 3 bit e codifica 2 bit per pixel:
+
+| Riga | Disegno | Codici | Byte |
+|---|---|---|---|
+| 1 | `010` + `0` | `00 01 00 00` | `$10` |
+| 2 | `101` + `0` | `01 00 01 00` | `$44` |
+| 3 | `111` + `0` | `01 01 01 00` | `$54` |
+| 4, 5 | `101` + `0` | `01 00 01 00` | `$44` |
+
+La "A" nel `.prg` è proprio `00 10 44 54 44 44 00 00`, a `$9508` =
+`FONT + 1*8`.
+
+Casi particolari:
+
+- **`~` (linea orizzontale, codice 41):** una sola riga piena, la 3, che vale
+  `%01010101` = `$55`.
+- **Icone dell'HUD (`*` energia, `+` chiave, `@` sigillo, `>` cursore):** usano
+  tutta la cella 4×8. In questo capitolo non si usano ancora.
+
+Numerazione dei codici (`GLYPH_ORDER`): spazio = 0, A-Z = 1-26, 0-9 = 27-36,
+`- : . /` = 37-40, `~` = 41, icone = 42-45. Sono 46 glifi × 8 byte = 368 byte,
+da `$9500` a `$966F`.
+
+**Perché solo il codice 01.** In multicolor il codice 01 prende il colore dal
+**nibble alto della screen RAM** della cella. Ne seguono due cose:
+
+- per colorare un carattere basta **un byte di screen RAM** (`colore << 4`);
+- la **Color RAM non si tocca mai**: il codice 11 non compare nei glifi, quindi
+  quello che c'è in Color RAM non è visibile. Lo stesso vale per il nibble
+  basso (codice 10).
+
+### 9.2 Il formato della stringa
+
+`font.encode_text` produce:
+
+```
+[colonna] [riga] [colore] [codice glifo] ... [$FF]
+```
+
+Il nome di ogni stanza si trova nella sua pagina, all'offset `ROOM_NAME` = 228.
+Per *The Moss Gate* (stanza 1) è a `$A1E4`:
+
+```
+$0D $18 $0C  $14 $08 $05 $00 $0D $0F $13 $13 $00 $07 $01 $14 $05  $FF
+ 13  24  12   T   H   E  sp   M   O   S   S  sp   G   A   T   E   fine
+col riga GREY
+```
+
+- **Colonna** = (40 − lunghezza) / 2 = (40 − 13) / 2 = 13: il nome è centrato
+  dal builder, non dal codice 6502.
+- **Riga** = `NAME_ROW` = 24, l'ultima dello schermo.
+- **Colore** = `NAME_COLOUR` = GREY (12).
+
+Il builder rifiuta un nome che esce dalla pagina (`NAME_AT + len > 256`) o
+dalla riga (`column + len > 40`), e un carattere che non esiste nel font. Il
+codice assembly può quindi fidarsi dei dati e non fa nessun controllo.
+
+### 9.3 Chi chiama la stampa
+
+Alla fine di `draw_room` ([room.asm:133-138](game/src/room.asm#L133-L138)):
+
+```asm
+        lda #ROOM_NAME           ; byte basso = 228
+        sta text_ptr
+        lda room_ptr+1           ; byte alto = pagina della stanza
+        sta text_ptr+1
+        jsr clear_name_row
+        jmp print_text
+```
+
+### 9.4 `clear_name_row` ([room.asm:272-289](game/src/room.asm#L272-L289))
+
+La riga 24 va ripulita perché `clear_screen` viene eseguita una sola volta,
+all'avvio. Se si passa da un nome lungo a uno corto, senza pulizia
+resterebbero le lettere del nome precedente.
+
+```asm
+        lda #0
+        ldx #0
+clear_name_page:
+        sta NAME_BITMAP,x        ; $7E00-$7EFF: 256 byte
+        inx
+        bne clear_name_page      ; X: 0,1,...,255 → 0 esce
+        ldx #63
+clear_name_tail:
+        sta NAME_BITMAP+256,x    ; $7F00-$7F3F: 64 byte
+        dex
+        bpl clear_name_tail      ; X: 63..0 → $FF esce
+        ldx #39
+clear_name_colours:
+        sta NAME_SCREEN,x        ; $47C0-$47E7: 40 byte
+        dex
+        bpl clear_name_colours
+        rts
+```
+
+Una riga di celle del bitmap è lunga 320 byte, che non stanno in un indice X a
+8 bit. Il codice la divide in una pagina intera (256 byte, ciclo con
+`inx/bne`) più una coda di 64 byte (ciclo con `dex/bpl`, valido finché
+X ≤ 127). Le basi `NAME_BITMAP = BITMAP + 24*320 = $7E00` e
+`NAME_SCREEN = SCREEN + 24*40 = $47C0` le calcola l'assembler.
+
+La Color RAM non viene pulita, perché il testo non la usa.
+
+### 9.5 `print_text`, istruzione per istruzione ([text.asm:13-96](game/src/text.asm#L13-L96))
+
+#### a) Lettura dell'intestazione
+
+```asm
+        ldy #0
+        lda (text_ptr),y         ; colonna
+        sta text_col
+        iny
+        lda (text_ptr),y         ; riga
+        tax                      ; X = riga: indice nelle tabelle delle righe
+        iny
+        lda (text_ptr),y         ; colore 0-15
+        asl a
+        asl a
+        asl a
+        asl a                    ; colore << 4: nibble alto = codice 01
+        sta text_colour
+```
+
+Con GREY = `$0C` si ottiene `text_colour = $C0`.
+
+#### b) Indirizzo in screen RAM: `SCREEN + riga*40 + colonna`
+
+```asm
+        lda text_col
+        clc
+        adc screen_rows_lo,x
+        sta text_scr
+        lda screen_rows_hi,x
+        adc #0                   ; propaga il riporto
+        sta text_scr+1
+```
+
+Le tabelle sono in fondo a `text.asm`:
+
+```asm
+screen_rows_lo: .byte <(SCREEN + range(25) * 40)
+screen_rows_hi: .byte >(SCREEN + range(25) * 40)
+bitmap_rows_lo: .byte <(BITMAP + range(25) * 320)
+bitmap_rows_hi: .byte >(BITMAP + range(25) * 320)
+```
+
+`range(25)` è una lista di 64tass: ogni riga genera 25 byte, uno per riga
+dello schermo. Le moltiplicazioni per 40 e per 320 diventano quindi letture da
+tabella (100 byte in tutto). Per la riga 24: `$4400 + 960 = $47C0`, quindi
+`text_scr = $47C0 + 13 = $47CD`.
+
+#### c) Indirizzo nel bitmap: `BITMAP + riga*320 + colonna*8`
+
+```asm
+        lda #0
+        sta text_bmp+1           ; parte alta di colonna*8
+        lda text_col
+        asl a
+        asl a
+        asl a                    ; solo questo può dare riporto
+        rol text_bmp+1           ; il riporto finisce nel byte alto
+        clc
+        adc bitmap_rows_lo,x
+        sta text_bmp
+        lda text_bmp+1
+        adc bitmap_rows_hi,x
+        sta text_bmp+1
+```
+
+La colonna vale al massimo 39 (`%0010_0111`):
+
+- dopo il primo `asl` vale al massimo 78 e dopo il secondo 156: nessun
+  riporto, perché il bit 7 di partenza è 0;
+- il terzo `asl` può dare riporto (39 × 8 = 312 > 255), e `rol text_bmp+1` lo
+  porta nel byte alto.
+
+Ne esce `colonna*8` a 16 bit, a cui si somma, sempre a 16 bit, l'inizio della
+riga. Il commento *"only this one can carry"* si riferisce proprio a questo:
+basta un solo `rol` invece di tre.
+
+Esempio: 13 × 8 = 104 = `$68`, senza riporto; `$7E00 + $68 = $7E68`.
+Verifica: `$6000 + 24*320 + 13*8 = $6000 + 7680 + 104 = $7E68` ✓.
+
+#### d) Ciclo dei caratteri
+
+```asm
+        lda #3                   ; il primo codice è all'offset 3
+        sta text_pos
+print_char:
+        ldy text_pos
+        lda (text_ptr),y
+        cmp #TEXT_END            ; $FF
+        beq print_done
+```
+
+Gli indici Y non si possono tenere nel registro durante tutto il ciclo, perché
+Y serve anche per copiare il glifo. Per questo la posizione nella stringa vive
+in zero page (`text_pos`).
+
+#### e) Indirizzo del glifo: `FONT + codice*8`
+
+```asm
+        ldx #0
+        stx glyph_ptr+1          ; azzera il byte alto
+        asl a
+        rol glyph_ptr+1
+        asl a
+        rol glyph_ptr+1
+        asl a
+        rol glyph_ptr+1          ; glyph_ptr+1:A = codice*8 a 16 bit
+        clc
+        adc #<FONT               ; $00
+        sta glyph_ptr
+        lda glyph_ptr+1
+        adc #>FONT               ; $95
+        sta glyph_ptr+1
+```
+
+Il codice arriva fino a 45, e 45 × 8 = 360 > 255, quindi serve una
+moltiplicazione a 16 bit. Qui il riporto può nascere a **ognuno** dei tre shift
+(con codici ≥ 32, ≥ 64 e ≥ 128 rispettivamente), perciò ogni `asl` ha il suo
+`rol`. È lo schema generico, diverso dal caso delle colonne, dove bastava un
+solo `rol`.
+
+Per la "T" (codice `$14` = 20): `$14 → $28 → $50 → $A0`, senza riporti, quindi
+`glyph_ptr = $95A0`. Per la cifra "9" (codice 36): 36 × 8 = 288 = `$0120`, e il
+riporto arriva al terzo shift.
+
+La somma di `<FONT` vale `$00` e non cambierebbe nulla, ma rende la routine
+corretta anche se un giorno il font venisse spostato a un indirizzo non
+allineato a pagina.
+
+#### f) Copia del glifo e colore
+
+```asm
+        ldy #7
+copy_glyph:
+        lda (glyph_ptr),y
+        sta (text_bmp),y
+        dey
+        bpl copy_glyph           ; 8 byte, Y = 7..0
+        ldy #0
+        lda text_colour          ; $C0
+        sta (text_scr),y         ; screen RAM della cella
+```
+
+Qui la copia **non è srotolata** come in `draw_half`: un nome ha al massimo una
+trentina di caratteri, quindi il risparmio sarebbe irrilevante.
+
+La copia sovrascrive tutti gli 8 byte della cella. Anche le righe vuote del
+glifo (0, 6 e 7) vengono scritte, così la cella è sempre pulita.
+
+#### g) Avanzamento alla cella successiva
+
+```asm
+        clc
+        lda text_bmp
+        adc #8                   ; bitmap: +8 byte
+        sta text_bmp
+        bcc glyph_page
+        inc text_bmp+1
+glyph_page:
+        inc text_scr             ; screen: +1 byte
+        bne glyph_done
+        inc text_scr+1           ; incremento a 16 bit
+glyph_done:
+        inc text_pos
+        bne print_char           ; salto incondizionato in pratica
+print_done:
+        rts
+```
+
+- `inc text_scr / bne / inc text_scr+1` è l'idioma standard per incrementare un
+  valore a 16 bit: il byte alto si incrementa solo quando il basso torna a 0.
+- `inc text_pos / bne print_char` fa da salto incondizionato con un byte in
+  meno di `jmp`. Funziona perché `text_pos` non arriva mai a 256: le stringhe
+  sono corte.
+
+### 9.6 Risultato per *The Moss Gate*
+
+| Car. | Codice | `glyph_ptr` | Bitmap | Screen |
+|---|---|---|---|---|
+| T | `$14` | `$95A0` | `$7E68` | `$47CD ← $C0` |
+| H | `$08` | `$9540` | `$7E70` | `$47CE ← $C0` |
+| E | `$05` | `$9528` | `$7E78` | `$47CF ← $C0` |
+| spazio | `$00` | `$9500` | `$7E80` | `$47D0 ← $C0` |
+| … | | | | |
+| E | `$05` | `$9528` | `$7ED0` | `$47D9 ← $C0` |
+
+Costo: circa 200 cicli per carattere, quindi 13 caratteri fanno circa 2.600
+cicli. `clear_name_row` ne costa circa 3.500. Sono valori trascurabili
+rispetto ai ~175.000 della mappa.
+
+### 9.7 Limiti del sistema di testo
+
+- Il testo è **monocromatico per stringa**: tutte le celle ricevono lo stesso
+  `text_colour`.
+- Una stringa **non va a capo** e non può attraversare righe. Il builder
+  garantisce che `colonna + lunghezza ≤ 40`.
+- Ogni carattere occupa una cella intera, cioè 4 pixel logici (8 pixel reali).
+  Il testo è a passo fisso: 40 caratteri per riga.
+- Nella cella il nibble basso della screen RAM viene azzerato. Non ha effetto
+  visibile, perché i glifi non usano il codice 10.
 
 ---
 
-## 10. Schema riassuntivo del flusso
+## 10. Le torce
+
+Una torcia animata nasce da quattro pezzi che lavorano insieme:
+
+1. **la grafica della metatile**, con una cella riservata alla fiamma e colori
+   fissi;
+2. **i fotogrammi** della fiamma (`FLAMES`, 4 × 8 byte);
+3. **la registrazione** delle celle-fiamma durante `draw_room`;
+4. **l'animazione** nel loop principale, sincronizzata al raster.
+
+### 10.1 La metatile della torcia (`tiles.py`, `torch()`)
+
+```python
+base = wall_face(1).pixels             # parete di mattoni
+for y in range(H):
+    for x in range(4):
+        t[y][x] = BLACK                # metà sinistra nera: la nicchia
+paint(t, 0, 8, bracket, ...)           # supporto di ferro nella cella BL
+if right: t = mirrored(t)              # versione destra: specchiata
+paint(t, flame_x, 0, FLAMES[0], {"R": RED, "O": ORANGE, "Y": YELLOW})
+kind = TYPE_TORCH_RIGHT if right else TYPE_TORCH_LEFT
+return Tile(..., t, SOLID_ALL, kind)
+```
+
+Disposizione della torcia sinistra (la destra è speculare):
+
+```
+┌────────┬────────┐
+│ FIAMMA │ mattoni│  TL = cella animata
+├────────┼────────┤
+│ staffa │ mattoni│  BL = supporto di ferro (marrone, arancio, grigio)
+└────────┴────────┘
+```
+
+Due accorgimenti importanti:
+
+- **La fiamma si disegna dopo lo specchio.** Così è sempre orientata allo
+  stesso modo e il fotogramma `FLAMES[0]` si copia identico in entrambe le
+  versioni.
+- **La cella della fiamma contiene solo i colori della fiamma.** I mattoni di
+  quella colonna vengono anneriti prima, quindi nella cella restano nero,
+  rosso, arancio e giallo: esattamente 3 colori più lo sfondo.
+
+#### La palette forzata
+
+`build_assets.encode_tile` codifica la cella della fiamma con
+`forced = FLAME_PALETTE = [RED, ORANGE, YELLOW]`:
+
+| Codice pixel | Colore | Origine | Valore |
+|---|---|---|---|
+| 01 | RED (2) | screen, nibble alto | ┐ screen = **`$28`** |
+| 10 | ORANGE (8) | screen, nibble basso | ┘ |
+| 11 | YELLOW (7) | Color RAM | **`$07`** |
+
+Senza `forced`, `encode_cell` assegnerebbe i codici in ordine di colore
+crescente fra quelli **effettivamente presenti** nella cella. Se un fotogramma
+non contenesse il giallo, la corrispondenza fra codici e colori cambierebbe.
+Fissare la palette garantisce che **in tutti e 4 i fotogrammi** il codice 01
+sia sempre rosso, il 10 sempre arancio e l'11 sempre giallo. Per animare basta
+quindi cambiare gli **8 byte del bitmap**: screen RAM e Color RAM restano
+quelle scritte da `draw_room`.
+
+**Indipendenza dalla zona.** Le palette di zona (`ZONE_PALETTES`) non
+rimappano mai RED, ORANGE e YELLOW. Nel `.prg` le tile 9 e `$36` (torcia
+sinistra), `$0F` e `$37` (torcia destra) hanno nella cella-fiamma screen `$28`
+e Color RAM `$07` in **tutte e 4 le zone**. Gli altri mattoni della stessa tile
+cambiano invece colore da zona a zona (`$BC`, `$B3`, `$6E`, `$98`).
+
+#### Gli attributi
+
+| Attributo | Bit 4-6 (tipo) | Bit 0-3 (solido) |
+|---|---|---|
+| `$1F` torcia sinistra | 1 = `TORCH_LEFT` | `1111`: tutta muro |
+| `$2F` torcia destra | 2 = `TORCH_RIGHT` | `1111` |
+
+### 10.2 I fotogrammi della fiamma (`sprites.py`, `FLAMES`)
+
+Quattro disegni 4×8 con `R`/`O`/`Y` mappati sui codici 1/2/3 (`FLAME_CODES`),
+scritti a `$9480`:
+
+```
+fot. 0       fot. 1       fot. 2       fot. 3
+..R.  $04    .R..  $10    ....  $00    ..R.  $04
+..O.  $08    .O..  $20    ..R.  $04    .RO.  $18
+.RO.  $18    .OR.  $24    .RO.  $18    .OY.  $2C
+.OY.  $2C    .YO.  $38    .OO.  $28    ROYO  $6E
+ROYO  $6E    OYOR  $B9    ROYO  $6E    ROYO  $6E
+ROYO  $6E    OYOR  $B9    ROYO  $6E    .OO.  $28
+.OO.  $28    .OO.  $28    .OY.  $2C    .OR.  $24
+..R.  $04    .R..  $10    ..R.  $04    ..R.  $04
+```
+
+I byte coincidono con quelli del `.prg`. Esempio di codifica, `ROYO` =
+`01 10 11 10` = `%01101110` = `$6E`.
+
+Il fotogramma 0 è identico a quello dipinto dentro la tile. Subito dopo
+`draw_room`, quindi, la cella mostra già una fiamma valida anche prima della
+prima animazione.
+
+### 10.3 La registrazione durante `draw_room`
+
+Il blocco è descritto in 6.4 ([room.asm:186-211](game/src/room.asm#L186-L211)).
+In memoria la lista è fatta di **due array paralleli** di 6 byte
+(`torch_lo`, `torch_hi`), uno per byte basso e uno per byte alto. Si leggono
+con `lda torch_lo,x` / `lda torch_hi,x`, senza dover moltiplicare l'indice
+per 2 come servirebbe con un array di parole a 16 bit.
+
+`draw_room` azzera `torch_count` all'inizio, quindi le torce della stanza
+precedente non vengono più animate.
+
+#### Le torce di *The Moss Gate*
+
+Estratte dalla mappa nel `.prg` (riga di cella = 3 + 2 × riga della mappa;
+colonna di cella = 2 × colonna della mappa, + 1 se la torcia è a destra):
+
+| Indice | Mappa (r, c) | Tile | Cella (riga, col) | Indirizzo bitmap |
+|---|---|---|---|---|
+| 0 | (1, 5) | `$09` sinistra | (5, 10) | `$6000 + 1600 + 80` = **`$6690`** |
+| 1 | (1, 12) | `$0F` destra | (5, 25) | `$6000 + 1600 + 200` = **`$6708`** |
+| 2 | (4, 2) | `$36` sinistra | (11, 4) | `$6000 + 3520 + 32` = **`$6DE0`** |
+| 3 | (4, 17) | `$37` destra | (11, 35) | `$6000 + 3520 + 280` = **`$6ED8`** |
+
+`torch_count` = 4. L'ordine è quello di disegno: per righe, da sinistra a
+destra.
+
+Il limite di 6 è controllato anche dal builder (`torches > MAX_TORCHES` ferma
+la build). Se un giorno se ne mettessero di più, quelle oltre la sesta non
+darebbero errori: resterebbero semplicemente immobili sul fotogramma 0.
+
+### 10.4 Il tempo: chi decide la fase
+
+#### `wait_frame` ([main.asm:88-95](game/src/main.asm#L88-L95))
+
+```asm
+wait_lower:
+        bit $d011
+        bpl wait_lower           ; aspetta raster ≥ 256 (bit 8 = 1)
+wait_upper:
+        bit $d011
+        bmi wait_upper           ; aspetta il ritorno a 0
+        rts
+```
+
+Il bit 7 di `$D011` è il **9° bit** della riga raster. In PAL le righe vanno da
+0 a 311:
+
+- il primo ciclo aspetta di trovarsi nella fascia 256-311 (bordo inferiore e
+  vertical blank);
+- il secondo aspetta che la riga torni sotto 256, cioè la **riga 0**: l'inizio
+  di un nuovo frame.
+
+Il doppio ciclo serve a garantire il fronte. Con il solo secondo ciclo,
+chiamandolo a riga 100 uscirebbe subito, perché il bit è già 0.
+
+`bit` legge il registro e copia il bit 7 in N **senza modificare A**; inoltre
+non serve una costante di confronto.
+
+#### Il contatore e la fase ([main.asm:64-83](game/src/main.asm#L64-L83))
+
+```asm
+main_loop:
+        jsr wait_frame
+        inc frame_count          ; contatore a 16 bit
+        bne count_ready
+        inc frame_count+1
+count_ready:
+        lda frame_count
+        and #7
+        bne frame_done           ; anima solo 1 frame su 8
+        lda frame_count
+        lsr a
+        lsr a
+        lsr a
+        and #3                   ; phase = (frame / 8) mod 4
+        sta torch_phase
+        jsr animate_torches
+frame_done:
+        jmp main_loop
+```
+
+Il comportamento si legge sui bit di `frame_count`:
+
+```
+frame_count = ... b4 b3 | b2 b1 b0
+                  └fase┘  └ deve essere 000 per animare
+```
+
+- `and #7` controlla i 3 bit bassi: si anima quando sono `000`, cioè una volta
+  ogni 8 frame;
+- `lsr ×3` + `and #3` estrae `b4 b3`, la fase 0-3.
+
+A 50 Hz (PAL) ogni fotogramma resta a schermo 8 / 50 = **160 ms**, e il ciclo
+completo di 4 fotogrammi dura **640 ms** (~6,25 fotogrammi al secondo).
+
+Basta il byte basso del contatore: 256 è multiplo di 32 (8 frame × 4 fasi),
+quindi quando il byte basso torna a 0 la sequenza riparte senza salti. Il byte
+alto non serve all'animazione; è pronto per usi futuri.
+
+La variante
+[variants/01-first-room/01a-faster-flames](../../variants/01-first-room/01a-faster-flames)
+cambia proprio queste due righe: `and #3` e due soli `lsr`, cioè un fotogramma
+ogni 4 frame (80 ms).
+
+### 10.5 `animate_torches`, istruzione per istruzione ([room.asm:294-322](game/src/room.asm#L294-L322))
+
+#### a) Sorgente: `FLAMES + torch_phase*8`
+
+```asm
+        lda torch_phase
+        asl a
+        asl a
+        asl a                    ; phase*8: 0, 8, 16, 24
+        clc
+        adc #<FLAMES             ; $80
+        sta flame_src
+        lda #>FLAMES             ; $94
+        adc #0                   ; riporto (qui mai: $80+24 = $98)
+        sta flame_src+1
+```
+
+Il risultato è uno fra `$9480`, `$9488`, `$9490` e `$9498`, e si calcola **una
+volta sola** per tutte le torce, perché tutte mostrano lo stesso fotogramma.
+
+#### b) Ciclo sulle torce, all'indietro
+
+```asm
+        ldx torch_count          ; 4
+        beq torches_done         ; nessuna torcia: esci
+next_torch:
+        dex                      ; X = 3, 2, 1, 0
+        lda torch_lo,x
+        sta flame_dst
+        lda torch_hi,x
+        sta flame_dst+1
+```
+
+Lo schema `dex` all'inizio del corpo trasforma il conteggio (4) negli indici
+3..0 senza bisogno di confronti.
+
+#### c) Copia degli 8 byte
+
+```asm
+        ldy #7
+copy_flame:
+        lda (flame_src),y
+        sta (flame_dst),y
+        dey
+        bpl copy_flame
+```
+
+#### d) Prossima torcia
+
+```asm
+        txa                      ; X vale 0 dopo l'ultima torcia?
+        bne next_torch
+torches_done:
+        rts
+```
+
+`dex` imposta già il flag Z, ma qui il test va fatto **dopo** la copia, e nel
+frattempo `dey` ha cambiato i flag. Per questo serve `txa`, che ricarica Z in
+base a X.
+
+#### Esempio: frame 64
+
+`frame_count = 64 = %0100_0000`: i 3 bit bassi sono `000`, quindi si anima. La
+fase è `(64 >> 3) & 3 = 8 & 3 = 0`, e `flame_src = $9480`. Gli 8 byte
+`04 08 18 2C 6E 6E 28 04` vengono copiati in `$6ED8`, `$6DE0`, `$6708` e
+`$6690`, in quest'ordine.
+
+### 10.6 Perché non si vede il tearing
+
+Costo di `animate_torches`:
+
+| Parte | Cicli |
+|---|---|
+| calcolo della sorgente | ~25 |
+| per torcia: indirizzo (~20) + 8 × (5+6+2+3) − 1 (~127) + `txa/bne` (~5) | ~150 |
+| 4 torce (Moss Gate) / 6 torce (massimo) | ~600 / ~900 |
+
+Una riga raster PAL dura 63 cicli, quindi 900 cicli corrispondono a circa
+**15 righe**. Il loop chiama `animate_torches` subito dopo `wait_frame`, quando
+il raster è a riga 0, nel bordo superiore. Le scritture finiscono intorno alla
+riga 20.
+
+L'area visibile parte dalla riga raster 51, e la prima riga di celle con torce
+(riga di cella 5) inizia alla riga raster 51 + 5 × 8 = **91**. Il pennello
+elettronico arriva sulle fiamme molto dopo che sono state aggiornate: non si
+vede mai metà fotogramma vecchio e metà nuovo.
+
+Questo margine resterà importante nei capitoli successivi, quando il loop
+dovrà fare altro lavoro (giocatore, nemici) nello stesso frame.
+
+### 10.7 Il collegamento con `enter_room`
+
+```asm
+        jsr draw_room            ; registra le torce, disegna il fotogramma 0
+room_drawn:
+        jsr animate_torches      ; allinea subito alla fase corrente
+        jsr wait_frame
+        lda #$3b                 ; display on
+        sta $d011
+```
+
+Quando si entra in una stanza, `torch_phase` contiene la fase raggiunta dal
+loop principale, che non viene azzerata. `animate_torches` porta subito tutte
+le nuove fiamme a quella fase, quindi l'animazione prosegue senza scatti anche
+cambiando stanza. Il commento *"flames in step at once"* si riferisce a
+questo.
+
+### 10.8 Testo e torce a confronto
+
+| Aspetto | Testo | Torce |
+|---|---|---|
+| Unità di disegno | 1 cella (8 byte) per carattere | 1 cella (8 byte) per torcia |
+| Sorgente | `FONT + codice*8` (16 bit, 3 `asl`/`rol`) | `FLAMES + fase*8` (calcolata una volta) |
+| Destinazione | tabelle `bitmap_rows` / `screen_rows` + colonna | indirizzi assoluti salvati da `draw_half` |
+| Colori | codice 01 → screen alto = `colore<<4`; Color RAM ignorata | palette forzata: screen `$28`, Color RAM `$07`, fissi in ogni zona |
+| Cosa si riscrive | bitmap + screen RAM | solo il bitmap |
+| Quando | una volta, alla fine di `draw_room` | 1 frame su 8, subito dopo il ritorno a riga 0 |
+| Controlli | tutti nel builder (colonna, lunghezza, caratteri) | builder (≤ 6 torce) + `cpy #MAX_TORCHES` a runtime |
+
+Il principio comune è spostare il lavoro **dal runtime alla preparazione**. I
+nomi arrivano già centrati e codificati, i colori della fiamma sono fissati in
+fase di build e gli indirizzi delle fiamme sono calcolati una volta sola,
+mentre si disegna la stanza. A runtime restano solo copie di 8 byte.
+
+---
+
+## 11. Schema riassuntivo del flusso
 
 ```
 draw_room
